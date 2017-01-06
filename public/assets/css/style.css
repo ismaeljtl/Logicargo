@@ -1,0 +1,163 @@
+/*
+ * Start Bootstrap - Landing Page (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+html, body{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    font-family: 'Lato', sans-serif;
+}
+
+.site-section{
+    min-height: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-color: #f0f0f0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+.navbar, .navbar-default{
+    margin-bottom: 0px;
+}
+
+.navbar-collapse .nav{
+    margin-top: 7px;
+}
+
+.lead {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.intro-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 91px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/mail.jpg) no-repeat center center;
+    width: auto;
+    height: 100%;
+    background-size: cover;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 12%;
+    padding-bottom: 0%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+@media(max-width:767px) {
+    .intro-message {
+        padding-bottom: 15%;
+    }
+
+    .intro-message > h1 {
+        font-size: 3em;
+    }
+
+    ul.intro-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.intro-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-divider {
+        width: 100%;
+    }
+}
+/*Fin pagina inicio*/
+
+/*Registro Persona Natural*/
+.register-persona .container-horizontal form .col-sm-4{
+    margin-bottom: 15px;
+}
+
+.register-persona .container-horizontal .form-group .col-sm-4 h2{
+    text-align: center;
+}
+
+body > div > form > div > div:nth-child(9), body > div > form > div > div:nth-child(10) > div > label{
+    margin-bottom: 0px;
+}
+
+body > .register-persona > div > form > div > div:nth-child(10) > label{
+    margin-top: 10px;
+}
+
+.register-persona div .regresar{
+    text-align: center;
+}
+
+.register-persona .container-horizontal .form-group .col-sm-4{
+    background-color: white;
+    border-radius: 10px;
+}
+/*Fin registro persona natural*/
+
+/*Registro Empleado*/
+.register-empleado .container-horizontal form .col-sm-4{
+    margin-bottom: 15px;
+}
+
+.register-empleado .container-horizontal .form-group .col-sm-4 h2{
+    text-align: center;
+}
+
+body > div > form > div > div:nth-child(9), body > div > form > div > div:nth-child(10) > div > label{
+    margin-bottom: 0px;
+}
+
+body > .register-empleado > div > form > div > div:nth-child(10) > label{
+    margin-top: 10px;
+}
+
+body > div > form > div > div:nth-child(9), body > div > form > div > div:nth-child(11) > div > label{
+    margin-bottom: 0px;
+}
+
+body > .register-empleado > div > form > div > div:nth-child(11) > label{
+    margin-top: 10px;
+}
+
+.register-empleado div .regresar{
+    text-align: center;
+}
+
+.register-empleado .container-horizontal .form-group .col-sm-4{
+    background-color: white;
+    border-radius: 10px;
+}
+/*Fin Registro Empleado*/

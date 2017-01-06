@@ -1,0 +1,1 @@
+Insert into mydb.Pais values (1, 'Venezuela', 58);
