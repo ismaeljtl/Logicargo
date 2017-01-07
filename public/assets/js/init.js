@@ -6,6 +6,8 @@ $(document).ready(function(){
     });
 
     getCiudades('#ciudades');
+
+    $('body > div > div > form > div > div:nth-child(14)').on('click', agregarJefe);
 });
 
 /* funcion para cargar la lista de ciudades que estan cargadas en la BD en un <select> */
@@ -33,4 +35,21 @@ function getCiudades(elemento){
             console.log(textStatus, errorThrown);
         }
     });
+}
+
+function agregarJefe(){
+    /* si el tipo de empleado seleccionado es igual a Repartidor */
+    if ($('#tipoEmp').val() == 2){
+        var str = '<label class="col-lg-3 col-form-label">Id Jefe</label>'
+                      +'<div class="col-lg-9">'
+                          +'<input class="form-control" id="Jefe_id" name="Jefe_id">'
+                          +'</select>'
+                      +'</div>'
+        $('#jefe').html(str);
+    }
+    else if($('#tipoEmp').val() != 2){
+        str = '<div class="form-group row">'
+              +'</div>';
+        $('#jefe').html(str);
+    }
 }

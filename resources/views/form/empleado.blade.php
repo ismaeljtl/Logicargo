@@ -14,7 +14,7 @@
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">Correo de Usuario</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="text" id="correo" name="correo">
+					<input class="form-control" type="email" id="correo" name="correo">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -77,21 +77,22 @@
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">Centro de Distibución</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="password" id="centro_Dist" name="centro_Dist">
+					<input class="form-control" type="text" id="centro_Dist" name="centro_Dist">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">Cargo</label>
 				<div class="col-lg-9">
 					<select class="form-control" id="tipoEmp" name="tipoEmp">
-						<option value="1">Repartidor</option>
-						<option value="2">Jefe de Repartidores</option>
+						<option value="1">Jefe de Repartidores</option>
+						<option value="2">Repartidor</option>
 						<option value="3">Secretaria</option>
 						<option value="4">Ingeniero de Soporte</option>
 						<option value="5">Gerente</option>
 					</select>
 				</div>
 			</div>
+			<div class="form-group row" id="jefe" name="jefe"></div>
 			<div class="btn-submit" style="text-align:center;">
                 <button type="submit" class="btn btn-info" id="businessForm">Enviar</button>
             </div>

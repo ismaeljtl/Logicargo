@@ -14,7 +14,7 @@
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">Correo de Usuario</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="text" id="correo" name="correo">
+					<input class="form-control" type="email" id="correo" name="correo">
 				</div>
 			</div>
 			<div class="form-group row">
