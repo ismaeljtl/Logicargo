@@ -1,4 +1,4 @@
-insert into mydb.Ciudad values
+insert into Logicargo.Ciudad values
 (1, 'Puerto Ayacucho', 1),
 (2, 'Maroa', 1),
 (3, 'La Esmeralda', 1),

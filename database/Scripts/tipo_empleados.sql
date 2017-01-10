@@ -1,4 +1,4 @@
-insert into mydb.Tipo_Empleado values
+insert into Logicargo.Tipo_Empleado values
 (1, 'Jefe de Repartidores'),
 (2, 'Repartidor'),
 (3, 'Secretaria'),

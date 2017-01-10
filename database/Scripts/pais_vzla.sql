@@ -1,1 +1,1 @@
-Insert into mydb.Pais values (1, 'Venezuela', 58);
+Insert into Logicargo.Pais values (1, 'Venezuela', 58);

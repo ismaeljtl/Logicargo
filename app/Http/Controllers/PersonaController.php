@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Hash;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -21,6 +22,8 @@ class PersonaController extends Controller
     public function create(Request $request){
         $var = $request->all();
         $id = DB::table('Persona')->insertGetId([
+            'user' => $var['correo'], 
+            'password' => Hash::make($var['clave']),
             'nombre' => $var['nombre'], 
             'segundo_nombre' => $var['segundo_nombre'],
             'apellido' => $var['apellido'],
@@ -30,13 +33,7 @@ class PersonaController extends Controller
             'Ciudad_id' => $var['ciudades']
         ]);
 
-        DB::table('Ciente')->insert([
-            'user' => $var['correo'], 
-            'password' => $var['clave'],
-            'Persona_id' => $id,
-        ]);
-
-        return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');;
+        return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
     }
 
 }

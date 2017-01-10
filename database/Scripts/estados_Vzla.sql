@@ -1,4 +1,4 @@
-insert into mydb.Estado values
+insert into Logicargo.Estado values
 (1, 'Amazonas', 1),
 (2, 'Anzoategui', 1),
 (3, 'Apure', 1),

@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('site.welcome');
 });
+Route::get('index', function () {
+    return view('site.index');
+});
 
 //Registro de personas
 Route::get('formPersona', [
@@ -34,7 +37,11 @@ Route::post('createEmpleado', [
             'as' => 'createEmpleado',     
       ]);
 
-Route::post('getCiudades', [
+Route::get('getCiudades', [
             'uses' => 'PersonaController@getCiudades',
             'as' => 'getCiudades',
       ]);
+
+//Rutas para Login de Usuarios
+Route::post('Login', 'Auth\AuthController@postLogin');
+Route::get('Logout', 'Auth\AuthController@getLogout');

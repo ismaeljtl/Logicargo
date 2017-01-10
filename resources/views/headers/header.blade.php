@@ -15,13 +15,10 @@
             {{ csrf_field() }}
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <input type="text" class="form-control" name="user" placeholder="Correo de Usuario">
+                    <a href="{{ url('Logout') }}">Log Out</a>
                 </li>
                 <li>
-                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
-                </li>
-                <li>
-                    <button type="submit" class="btn btn-info">Entrar</button>
+                    <span class="name-perfil">{{ Auth::user()->user }}</span>
                 </li>
             </ul>
         </form>

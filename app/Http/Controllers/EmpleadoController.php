@@ -16,6 +16,8 @@ class EmpleadoController extends Controller
     public function create(Request $request){
         $var = $request->all();
         $id = DB::table('Persona')->insertGetId([
+            'user' => $var['correo'], 
+            'password' => $var['clave'],
             'nombre' => $var['nombre'], 
             'segundo_nombre' => $var['segundo_nombre'],
             'apellido' => $var['apellido'],
@@ -26,8 +28,6 @@ class EmpleadoController extends Controller
         ]);
 
         DB::table('Empleado')->insert([
-            'user' => $var['correo'], 
-            'password' => $var['clave'],
             'fechaInicio' => $var['fecha_Inic'],
             'Persona_id' => $id,
             'Centro_Distribucion_id' => $var['centro_Dist'],

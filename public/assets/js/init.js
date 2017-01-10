@@ -16,7 +16,7 @@ function getCiudades(elemento){
         // la URL para la petición
         url: 'getCiudades',
         // especifica si será una petición POST o GET
-        type: 'POST',
+        type: 'get',
         // la información a enviar
         data: {'_token': $('input[name=_token]').val() },
         // el tipo de información que se espera de respuesta

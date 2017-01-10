@@ -7,6 +7,9 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Auth;
+use Hash;
 
 class AuthController extends Controller
 {
@@ -39,14 +42,14 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    /*protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
-    }
+    }*/
 
     /**
      * Create a new user instance after a valid registration.
@@ -61,5 +64,21 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function postLogin(Request $request)
+    {
+        if (Auth::attempt(['user' => $request->input("user"),'password' => $request->input("password")]))
+        {
+            return redirect('index'); 
+        }
+        else{
+            return redirect('/')->with('status', 'ERROR! No has podido entrar a la aplicacion. Verifica Correo y Clave.');
+        }
+    }
+
+    public function getLogout(){   
+        Auth::logout();
+        return redirect('/'); 
     }
 }
