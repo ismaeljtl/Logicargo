@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Auth;
 use Hash;
+use DB;
 
 class AuthController extends Controller
 {
@@ -70,7 +71,12 @@ class AuthController extends Controller
     {
         if (Auth::attempt(['user' => $request->input("user"),'password' => $request->input("password")]))
         {
-            return redirect('index'); 
+            $usuario = DB::table('Empleado')->select('Tipo_Empleado_id')->where('Persona_id', '=', Auth::id())->get();
+            if ($usuario == null){
+                return redirect('indexCli'); 
+            }
+            else
+                return redirect('indexEmp'); 
         }
         else{
             return redirect('/')->with('status', 'ERROR! No has podido entrar a la aplicacion. Verifica Correo y Clave.');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Hash;
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +19,7 @@ class EmpleadoController extends Controller
         $var = $request->all();
         $id = DB::table('Persona')->insertGetId([
             'user' => $var['correo'], 
-            'password' => $var['clave'],
+            'password' => Hash::make($var['clave']),
             'nombre' => $var['nombre'], 
             'segundo_nombre' => $var['segundo_nombre'],
             'apellido' => $var['apellido'],
@@ -36,4 +38,5 @@ class EmpleadoController extends Controller
 
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');;
     }
+    
 }

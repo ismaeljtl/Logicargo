@@ -37,6 +37,21 @@ h6 {
     margin-top: 7px;
 }
 
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+    margin-top: 5px;
+}
+
+#eliminar{
+    color: red;
+}
+
 .alert, .alert-success, .alert-dismissible{
     margin-bottom: 0px;
 }

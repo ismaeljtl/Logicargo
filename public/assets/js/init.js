@@ -47,9 +47,21 @@ function agregarJefe(){
                       +'</div>'
         $('#jefe').html(str);
     }
-    else if($('#tipoEmp').val() != 2){
+    else if ($('#tipoEmp').val() != 2){
         str = '<div class="form-group row">'
               +'</div>';
         $('#jefe').html(str);
+    }
+}
+
+function eliminarCli() {
+    if (confirm("¿Estás seguro de que deseas eliminar la cuenta?") == true){
+      window.location.href = 'eliminarUsuario'; 
+    }
+}
+
+function eliminarEmp() {
+    if (confirm("¿Estás seguro de que deseas eliminar la cuenta?") == true){
+      window.location.href = 'eliminarEmpleado'; 
     }
 }

@@ -18,7 +18,34 @@
                     <a href="{{ url('Logout') }}">Log Out</a>
                 </li>
                 <li>
-                    <span class="name-perfil">{{ Auth::user()->user }}</span>
+                    <a class="name-perfil">{{ Auth::user()->user }}</a>
+                </li>
+                <li>
+
+                @if(strcmp(Auth::user()->user, 'admin') == 0)
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle btn-circle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span class="glyphicon glyphicon-option-vertical"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Reportes</a></li>
+                        </ul>
+                    </div>
+                @else
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle btn-circle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span class="glyphicon glyphicon-option-vertical"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            @if(strcmp(Auth::user()->user, 'admin') == 0)
+                                <li><a href="#">Reportes</a></li>
+                            @endif
+                            <li><a href="actualizaIndex">Editar Datos</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a id="eliminar" onclick="eliminarCli()">Eliminar Cuenta</a></li>
+                        </ul>
+                    </div>
+                @endif
                 </li>
             </ul>
         </form>

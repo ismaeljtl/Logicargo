@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>LOGICARGO</h1>
+                        <h1>Cliente</h1>
                         <h3>La empresa donde hacer tus envíos</h3>
                     </div>
                 </div>

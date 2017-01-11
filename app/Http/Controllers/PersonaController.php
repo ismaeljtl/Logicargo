@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Hash;
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -34,6 +35,27 @@ class PersonaController extends Controller
         ]);
 
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
+    }
+
+    public function eliminar(){
+        $user = Auth::user()->user;
+        $id = Auth::id();
+        Auth::logout();
+        DB::table('Persona')->where('user', '=', $user)->delete();
+        if (DB::table('Empleado')->where('Persona_id', '=', $id)->select() != null){
+            DB::table('Empleado')->where('Persona_id', '=', $id)->delete();
+        }
+        return redirect('/')->with('status', 'Ha sido eliminado del sistema exitosamente!');
+    }
+
+    //metodo que busca los datos en la BD para mostrarlos en el formulario de actualizacion
+    public function actualizar(Request $request){
+        $usuario = DB::table('Persona')->where('id', '=', Auth::id())->select()->get();
+        if (DB::table('Empleado')->where('Persona_id', '=', Auth::id())->select() != null){
+            $empleado = DB::table('Empleado')->where('Persona_id', '=', Auth::id())->select()->get();
+        }
+        
+        return view('form.actualizar', array('usuario' => $usuario, 'empleado' => $empleado));
     }
 
 }

@@ -14,8 +14,11 @@
 Route::get('/', function () {
     return view('site.welcome');
 });
-Route::get('index', function () {
-    return view('site.index');
+Route::get('indexCli', function () {
+    return view('site.indexCli');
+});
+Route::get('indexEmp', function () {
+    return view('site.indexEmp');
 });
 
 //Registro de personas
@@ -45,3 +48,19 @@ Route::get('getCiudades', [
 //Rutas para Login de Usuarios
 Route::post('Login', 'Auth\AuthController@postLogin');
 Route::get('Logout', 'Auth\AuthController@getLogout');
+
+//Rutas para Eliminar Usuarios
+Route::get('eliminarUsuario', [
+            'uses' => 'PersonaController@eliminar',
+            'as' => 'eliminarUsuario',
+      ]);
+
+//Rutas para Actualizar Usuarios
+Route::get('actualizar',[
+            'uses' => 'PersonaController@actualizar',
+            'as' => 'actualizar',
+      ]);
+Route::post('actualizarUsuario', [
+            'uses' => 'PersonaController@actualizarUsuario',
+            'as' => 'actualizarUsuario',
+      ]);
