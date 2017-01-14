@@ -52,10 +52,10 @@ class PersonaController extends Controller
     //metodo que busca los datos en la BD para mostrarlos en el formulario de actualizacion
     public function actualizar(Request $request){
         $usuario = DB::table('Persona')->where('id', '=', Auth::id())->select()->get();
-        if (DB::table('Empleado')->where('Persona_id', '=', Auth::id())->select() != null){
+        $empleado = array();
+        if (strcmp($usuario[0]->rol, 'empleado') == 0){
             $empleado = DB::table('Empleado')->where('Persona_id', '=', Auth::id())->select()->get();
-        }
-        
+        }        
         return view('form.actualizar', array('usuario' => $usuario, 'empleado' => $empleado));
     }
 

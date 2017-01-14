@@ -40,7 +40,7 @@
                             @if(strcmp(Auth::user()->user, 'admin') == 0)
                                 <li><a href="#">Reportes</a></li>
                             @endif
-                            <li><a href="actualizaIndex">Editar Datos</a></li>
+                            <li><a href="actualizar">Editar Datos</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a id="eliminar" onclick="eliminarCli()">Eliminar Cuenta</a></li>
                         </ul>

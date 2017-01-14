@@ -60,7 +60,3 @@ Route::get('actualizar',[
             'uses' => 'PersonaController@actualizar',
             'as' => 'actualizar',
       ]);
-Route::post('actualizarUsuario', [
-            'uses' => 'PersonaController@actualizarUsuario',
-            'as' => 'actualizarUsuario',
-      ]);

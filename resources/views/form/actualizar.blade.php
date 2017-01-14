@@ -14,7 +14,7 @@
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">Correo de Usuario</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="email" id="correo" name="correo" value="{{$usuario[0]->nombre}}">
+					<input class="form-control" type="email" id="correo" name="correo" value="{{$usuario[0]->rol}}">
 				</div>
 			</div>
 			<div class="form-group row">
