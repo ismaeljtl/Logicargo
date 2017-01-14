@@ -1,1 +1,0 @@
-Insert into Logicargo.Pais values (1, 'Venezuela', 58);

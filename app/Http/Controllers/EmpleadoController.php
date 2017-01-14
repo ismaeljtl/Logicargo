@@ -24,6 +24,7 @@ class EmpleadoController extends Controller
             'segundo_nombre' => $var['segundo_nombre'],
             'apellido' => $var['apellido'],
             'segundo_apellido' => $var['segundo_apellido'],
+            'rol' => $var['rol'],
             'fecha_Nac' => $var['fecha_Nac'],
             'cedula' => $var['cedula'],
             'Ciudad_id' => $var['ciudades']
