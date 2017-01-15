@@ -5,9 +5,10 @@ $(document).ready(function(){
         }
     });
 
-    getCiudades('#ciudades');
+    getCiudades('#centro_Dist');
+    getJefes('#Jefe_id');
 
-    $('body > div > div > form > div > div:nth-child(14)').on('click', agregarJefe);
+    $('body > div > div > form > div > div:nth-child(13) > div').on('click', agregarJefe);
 });
 
 /* funcion para cargar la lista de ciudades que estan cargadas en la BD en un <select> */
@@ -36,21 +37,41 @@ function getCiudades(elemento){
         }
     });
 }
+/* funcion para cargar la lista de los id de los Jefes */
+function getJefes(elemento){
+    $.ajax({
+        // la URL para la petición
+        url: 'getJefes',
+        // especifica si será una petición POST o GET
+        type: 'get',
+        // la información a enviar
+        data: {'_token': $('input[name=_token]').val() },
+        // el tipo de información que se espera de respuesta
+        dataType: 'json',   
+        before: function() {
+            //
+        },     
+        success: function(data) {
+            console.log(data);
+            var str="";
+            for (var i = 0; i < data.length; i++) {
+                str += '<option value = '+data[i].id+' name="Jefe">'+data[i].id+'</option>';
+                $(elemento).html(str);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+    });
+}
 
 function agregarJefe(){
     /* si el tipo de empleado seleccionado es igual a Repartidor */
     if ($('#tipoEmp').val() == 2){
-        var str = '<label class="col-lg-3 col-form-label">Id Jefe</label>'
-                      +'<div class="col-lg-9">'
-                          +'<input class="form-control" id="Jefe_id" name="Jefe_id">'
-                          +'</select>'
-                      +'</div>'
-        $('#jefe').html(str);
+        $('#jefe').css('display', 'block');
     }
     else if ($('#tipoEmp').val() != 2){
-        str = '<div class="form-group row">'
-              +'</div>';
-        $('#jefe').html(str);
+        $('#jefe').css('display', 'none');
     }
 }
 

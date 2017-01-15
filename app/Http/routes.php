@@ -45,6 +45,11 @@ Route::get('getCiudades', [
             'as' => 'getCiudades',
       ]);
 
+Route::get('getJefes', [
+            'uses' => 'EmpleadoController@getJefes',
+            'as' => 'getJefes',
+      ]);
+
 //Rutas para Login de Usuarios
 Route::post('Login', 'Auth\AuthController@postLogin');
 Route::get('Logout', 'Auth\AuthController@getLogout');

@@ -99,7 +99,6 @@ CREATE TABLE IF NOT EXISTS `Logicargo`.`Sede` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `direccion` VARCHAR(250) NOT NULL,
-  `descripcion` VARCHAR(150) NULL,
   `Ciudad_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Sede_Ciudad1_idx` (`Ciudad_id` ASC),
@@ -118,9 +117,6 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `Logicargo`.`Centro_Distribucion` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
-  `direccion` VARCHAR(250) NOT NULL,
-  `longitud` FLOAT NOT NULL,
-  `latitud` FLOAT NOT NULL,
   `descripcion` VARCHAR(150) NULL,
   `Sede_id` INT NOT NULL,
   `Ciudad_id` INT NOT NULL,

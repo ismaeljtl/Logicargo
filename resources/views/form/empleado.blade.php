@@ -68,16 +68,10 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Ciudad</label>
-				<div class="col-lg-9">
-				<select class="form-control" id="ciudades" name="ciudades">
-				</select>
-				</div>
-			</div>
-			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">Centro de Distibución</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="text" id="centro_Dist" name="centro_Dist">
+					<select class="form-control" id="centro_Dist" name="centro_Dist">
+					</select>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -92,7 +86,13 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group row" id="jefe" name="jefe"></div>
+			<div class="form-group row" id="jefe" name="jefe" style="display: none;">
+				<label class="col-lg-3 col-form-label">Id Jefe</label>
+				<div class="col-lg-9">
+					<select class="form-control" id="Jefe_id" name="Jefe_id">
+					</select>
+				</div>
+			</div>
 			<div class="btn-submit" style="text-align:center;">
                 <button type="submit" class="btn btn-info" id="businessForm">Enviar</button>
             </div>
