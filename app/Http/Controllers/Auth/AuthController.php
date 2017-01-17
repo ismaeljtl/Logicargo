@@ -72,11 +72,7 @@ class AuthController extends Controller
         if (Auth::attempt(['user' => $request->input("user"),'password' => $request->input("password")],true))
         {
             $usuario = DB::table('Empleado')->select('Tipo_Empleado_id')->where('Persona_id', '=', Auth::id())->get();
-            if ($usuario == null){
-                return redirect('indexCli'); 
-            }
-            else
-                return redirect('indexEmp'); 
+            return redirect('/'); 
         }
         else{
             return redirect('/')->with('status', 'ERROR! No has podido entrar a la aplicacion. Verifica Correo y Clave.');
