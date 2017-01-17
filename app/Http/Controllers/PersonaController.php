@@ -12,7 +12,8 @@ use App\Http\Controllers\Controller;
 class PersonaController extends Controller
 {
     public function index(){
-        return view("form.persona");
+        $ciudades = DB::table('Ciudad')->select('id', 'nombre')->orderBy('nombre', 'asc')->get();
+        return view("form.persona",['ciudades' => $ciudades]);
     }
 
     public function getCiudades(){
@@ -34,7 +35,7 @@ class PersonaController extends Controller
             'cedula' => $var['cedula'],
             'Ciudad_id' => $var['ciudades']
         ]);
-
+        Auth::loginUsingId($id,true);
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
     }
 

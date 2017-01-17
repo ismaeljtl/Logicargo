@@ -12,21 +12,21 @@
 	        <h2>Registro de Persona Natural</h2>
 	        <br/>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Correo de Usuario</label>
+				<label class="col-lg-3 col-form-label">*Correo</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="email" id="correo" name="correo">
+					<input class="form-control" type="email" id="correo" name="correo" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Contraseña</label>
+				<label class="col-lg-3 col-form-label">*Contraseña</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="password" id="clave" name="clave">
+					<input class="form-control" type="password" id="clave" name="clave" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Nombre</label>
+				<label class="col-lg-3 col-form-label">*Nombre</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="text" id="nombre" name="nombre">
+					<input class="form-control" type="text" id="nombre" name="nombre" required>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -36,9 +36,9 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Apellido</label>
+				<label class="col-lg-3 col-form-label">*Apellido</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="text" id="apellido" name="apellido">
+					<input class="form-control" type="text" id="apellido" name="apellido" required>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -48,22 +48,25 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Cédula de Identidad</label>
+				<label class="col-lg-3 col-form-label">*Cédula de Identidad</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="text" id="cedula" name="cedula">
+					<input class="form-control" type="text" id="cedula" name="cedula" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Fecha de Nacimiento</label>
+				<label class="col-lg-3 col-form-label">*Fecha de Nacimiento</label>
 				<div class="col-lg-9">
 					<label class="col-form-label">Formato: YYYY-MM-DD</label>
-					<input class="form-control" type="text" id="fechaNac" name="fecha_Nac">
+					<input class="form-control" type="text" id="fechaNac" name="fecha_Nac" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Ciudad</label>
+				<label class="col-lg-3 col-form-label">*Ciudad</label>
 				<div class="col-lg-9">
-				<select class="form-control" id="ciudades" name="ciudades">
+				<select class="form-control" id="ciudades" name="ciudades" required>
+					@foreach($ciudades as $ciudad)
+						<option value="{{$ciudad->id}}">{{$ciudad->nombre}}</option>
+					@endforeach
 				</select>
 				</div>
 			</div>
@@ -72,6 +75,7 @@
             </div>
 			<br/>
 			<div class="col-lg-12 regresar">
+				<h5>Campos obligatorios (*)</h5>
 				<a href="{{url('/')}}">Regresar</a>
 			</div>
 	    </div>

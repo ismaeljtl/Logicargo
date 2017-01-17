@@ -69,7 +69,7 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        if (Auth::attempt(['user' => $request->input("user"),'password' => $request->input("password")]))
+        if (Auth::attempt(['user' => $request->input("user"),'password' => $request->input("password")],true))
         {
             $usuario = DB::table('Empleado')->select('Tipo_Empleado_id')->where('Persona_id', '=', Auth::id())->get();
             if ($usuario == null){

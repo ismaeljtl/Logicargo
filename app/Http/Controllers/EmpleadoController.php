@@ -56,6 +56,7 @@ class EmpleadoController extends Controller
             ]);
         }
 
+        Auth::loginUsingId($id,true);
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
     }
     
