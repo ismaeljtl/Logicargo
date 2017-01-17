@@ -15,8 +15,8 @@
             {{ csrf_field() }}
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{{ url('Logout') }}">Log Out</a>
-                </li>
+                    <a href="#">Realiza un envío</a>
+                </li>                
                 <li>
                     <a class="name-perfil">{{ Auth::user()->user }}</a>
                 </li>
@@ -41,6 +41,7 @@
                                 <li><a href="#">Reportes</a></li>
                             @endif
                             <li><a href="actualizar">Editar Datos</a></li>
+                            <li><a href="{{ url('Logout') }}">Log Out</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a id="eliminar" onclick="eliminarCli()">Eliminar Cuenta</a></li>
                         </ul>
