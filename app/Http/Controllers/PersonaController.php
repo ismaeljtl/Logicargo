@@ -35,6 +35,14 @@ class PersonaController extends Controller
             'cedula' => $var['cedula'],
             'Ciudad_id' => $var['ciudades']
         ]);
+
+        DB::table('Historico_Usuario')->insert([
+            'fechaHora' => date("Y-m-d H:i:s"),
+            'accion' => 'registro',
+            'id_Persona' => $id,
+            'user' => $var['correo']
+        ]);
+
         Auth::loginUsingId($id,true);
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
     }
@@ -43,6 +51,14 @@ class PersonaController extends Controller
         $user = Auth::user()->user;
         $id = Auth::id();
         Auth::logout();
+
+        DB::table('Historico_Usuario')->insert([
+            'fechaHora' => date("Y-m-d H:i:s"),
+            'accion' => 'eliminar',
+            'id_Persona' => $id,
+            'user' => $user
+        ]);
+
         DB::table('Persona')->where('user', '=', $user)->delete();
         if (DB::table('Empleado')->where('Persona_id', '=', $id)->select() != null){
             DB::table('Empleado')->where('Persona_id', '=', $id)->delete();

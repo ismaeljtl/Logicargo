@@ -77,7 +77,7 @@ function agregarJefe(){
 
 function eliminarCli() {
     if (confirm("¿Estás seguro de que deseas eliminar la cuenta?") == true){
-      window.location.href = 'eliminarUsuario'; 
+      window.location.href = 'eliminarCliente'; 
     }
 }
 

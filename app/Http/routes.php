@@ -14,11 +14,8 @@
 Route::get('/', function () {
     return view('site.welcome');
 });
-Route::get('indexCli', function () {
-    return view('site.indexCli');
-});
-Route::get('indexEmp', function () {
-    return view('site.indexEmp');
+Route::get('admin.index', function () {
+    return view('admin.index');
 });
 
 //Registro de personas
@@ -55,9 +52,13 @@ Route::post('Login', 'Auth\AuthController@postLogin');
 Route::get('Logout', 'Auth\AuthController@getLogout');
 
 //Rutas para Eliminar Usuarios
-Route::get('eliminarUsuario', [
+Route::get('eliminarCliente', [
             'uses' => 'PersonaController@eliminar',
-            'as' => 'eliminarUsuario',
+            'as' => 'eliminarCliente',
+      ]);
+Route::get('eliminarEmpleado', [
+            'uses' => 'EmpleadoController@eliminar',
+            'as' => 'eliminarEmpleado',
       ]);
 
 //Rutas para Actualizar Usuarios

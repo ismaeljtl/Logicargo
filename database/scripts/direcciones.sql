@@ -113,5 +113,5 @@ insert into Logicargo.Ciudad values
 (84, 'Maracaibo', 24),
 (85, 'Cabimas', 24),
 (86, 'Machiques', 24),
-(87, 'Ciudad Ojeda', 24)
+(87, 'Ciudad Ojeda', 24),
 (88, 'Caracas', 10);

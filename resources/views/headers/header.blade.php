@@ -15,37 +15,52 @@
             {{ csrf_field() }}
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#">Realiza un envío</a>
+                    <li><a href="{{ url('Logout') }}">Salir de Aplicacion</a></li>
                 </li>                
                 <li>
                     <a class="name-perfil">{{ Auth::user()->user }}</a>
                 </li>
                 <li>
 
+                <!-- Administrador -->
                 @if(strcmp(Auth::user()->user, 'admin') == 0)
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle btn-circle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <span class="glyphicon glyphicon-option-vertical"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">Reportes</a></li>
+                            <li><a href="#">Opciones</a></li>
                         </ul>
                     </div>
-                @else
+
+                <!-- Cliente -->
+                @elseif(strcmp(Auth::user()->rol, 'persona') == 0)
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle btn-circle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <span class="glyphicon glyphicon-option-vertical"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            @if(strcmp(Auth::user()->user, 'admin') == 0)
-                                <li><a href="#">Reportes</a></li>
-                            @endif
                             <li><a href="actualizar">Editar Datos</a></li>
-                            <li><a href="{{ url('Logout') }}">Log Out</a></li>
+                            <li><a href="actualizar">Cliente</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a id="eliminar" onclick="eliminarCli()">Eliminar Cuenta</a></li>
                         </ul>
                     </div>
+
+                <!-- Empleado -->
+                @elseif(strcmp(Auth::user()->rol, 'empleado') == 0)
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle btn-circle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span class="glyphicon glyphicon-option-vertical"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="actualizar">Editar Datos</a></li>
+                            <li><a href="actualizar">Empleado</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a id="eliminar" onclick="eliminarEmp()">Eliminar Cuenta</a></li>
+                        </ul>
+                    </div>
+
                 @endif
                 </li>
             </ul>
