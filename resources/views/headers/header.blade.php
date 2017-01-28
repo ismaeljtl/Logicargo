@@ -41,7 +41,6 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="actualizar">Editar Datos</a></li>
-                            <li><a href="actualizar">Cliente</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a id="eliminar" onclick="eliminarCli()">Eliminar Cuenta</a></li>
                         </ul>
@@ -55,7 +54,6 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="actualizar">Editar Datos</a></li>
-                            <li><a href="actualizar">Empleado</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a id="eliminar" onclick="eliminarEmp()">Eliminar Cuenta</a></li>
                         </ul>
