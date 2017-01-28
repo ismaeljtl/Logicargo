@@ -85,6 +85,13 @@ class PersonaController extends Controller
             ->update(['user' => $var['correo'],
                      'password' => Hash::make($var['clave'])
             ]);
+            
+            DB::table('Historico_Usuario')->insert([
+                'fechaHora' => date("Y-m-d H:i:s"),
+                'accion' => 'actualizacion',
+                'id_Persona' => Auth::id(),
+                'user' => $var['correo']
+            ]);
             return redirect('/')->with('status', 'Sus datos han sido actualizados exitosamente!');
         }
         else{

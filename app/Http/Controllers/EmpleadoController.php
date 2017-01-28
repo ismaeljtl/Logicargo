@@ -89,6 +89,13 @@ class EmpleadoController extends Controller
             ->where('Persona_id', Auth::id())
             ->update(['Centro_Distribucion_id' => $var['centro_Dist']]);
 
+            DB::table('Historico_Usuario')->insert([
+                'fechaHora' => date("Y-m-d H:i:s"),
+                'accion' => 'actualizacion',
+                'id_Persona' => Auth::id(),
+                'user' => $var['correo']
+            ]);
+
             return redirect('/')->with('status', 'Sus datos han sido actualizados exitosamente!');
         }
         else{
