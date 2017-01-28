@@ -73,7 +73,23 @@ class PersonaController extends Controller
         if (strcmp($usuario[0]->rol, 'empleado') == 0){
             $empleado = DB::table('Empleado')->where('Persona_id', '=', Auth::id())->select()->get();
         }        
-        return view('form.actualizar', array('usuario' => $usuario, 'empleado' => $empleado));
+        return view('form.actualizarCliente', array('usuario' => $usuario, 'empleado' => $empleado));
+    }
+
+    public function actualizarPersona(Request $request){
+        $var = $request->all();
+
+        if (strcmp($var['clave'], $var['clave1']) == 0){
+            DB::table('Persona')
+            ->where('id', Auth::id())
+            ->update(['user' => $var['correo'],
+                     'password' => Hash::make($var['clave'])
+            ]);
+            return redirect('/')->with('status', 'Sus datos han sido actualizados exitosamente!');
+        }
+        else{
+            return redirect('actualizarCliente')->with('status', 'Las claves no coinciden, verifique nuevamente');
+        }
     }
 
     public function getPersonas(){

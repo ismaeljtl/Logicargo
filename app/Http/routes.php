@@ -67,7 +67,11 @@ Route::get('eliminarEmpleado', [
       ]);
 
 //Rutas para Actualizar Usuarios
-Route::get('actualizar',[
+Route::get('actualizarCliente',[
             'uses' => 'PersonaController@actualizar',
             'as' => 'actualizar',
+      ]);
+Route::post('actualizarPersona',[
+            'uses' => 'PersonaController@actualizarPersona',
+            'as' => 'actualizarPersona',
       ]);

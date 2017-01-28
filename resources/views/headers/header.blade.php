@@ -40,7 +40,7 @@
                             <span class="glyphicon glyphicon-option-vertical"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="actualizar">Editar Datos</a></li>
+                            <li><a href="actualizarCliente">Editar Datos</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a id="eliminar" onclick="eliminarCli()">Eliminar Cuenta</a></li>
                         </ul>

@@ -5,7 +5,7 @@
 @section('main')
 
     <div class="container-horizontal">
-		<form class="form-group" method="POST" action="createPersona">
+		<form class="form-group" method="POST" action="actualizarPersona">
 		{{ csrf_field() }}
 		<div class="col-sm-4 col-sm-offset-4">
 	        <h2>Actualización de Datos</h2>
@@ -17,12 +17,6 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Antigua Contraseña</label>
-				<div class="col-lg-9">
-					<input class="form-control" type="password" id="clave" name="clave">
-				</div>
-			</div>
-			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">Nueva Contraseña</label>
 				<div class="col-lg-9">
 					<input class="form-control" type="password" id="clave" name="clave">
@@ -31,10 +25,11 @@
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">Repita la Contraseña</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="password" id="clave" name="clave">
+					<input class="form-control" type="password" id="clave" name="clave1">
 				</div>
 			</div>
 			
+			<!-- Esto del cliente se movera -->
 			<!-- Si es empleado -->
 			@if( strcmp($usuario[0]->rol, 'empleado') == 0 )
 				<div class="form-group row">
