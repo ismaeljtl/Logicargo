@@ -16,6 +16,7 @@
 				<div class="col-lg-9">
 					<input class="form-control" type="email" id="correo" name="correo" required>
 				</div>
+				<div class="notify"></div>
 			</div>
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">*Contraseña</label>

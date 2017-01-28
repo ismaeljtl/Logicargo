@@ -47,6 +47,11 @@ Route::get('getJefes', [
             'as' => 'getJefes',
       ]);
 
+Route::get('getPersonas', [
+            'uses' => 'PersonaController@getPersonas',
+            'as' => 'getPersonas',
+      ]);
+
 //Rutas para Login de Usuarios
 Route::post('Login', 'Auth\AuthController@postLogin');
 Route::get('Logout', 'Auth\AuthController@getLogout');

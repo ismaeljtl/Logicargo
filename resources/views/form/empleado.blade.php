@@ -13,7 +13,7 @@
 	        <br/>
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">*Correo</label>
-				<div class="col-lg-9">
+				<div class="col-lg-9 divCorreo">
 					<input class="form-control" type="text" id="correo" name="correo" required>
 				</div>
 			</div>

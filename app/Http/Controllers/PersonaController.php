@@ -76,4 +76,9 @@ class PersonaController extends Controller
         return view('form.actualizar', array('usuario' => $usuario, 'empleado' => $empleado));
     }
 
+    public function getPersonas(){
+        $correos = DB::table('Persona')->select('user')->orderBy('user', 'asc')->get();
+        return json_encode($correos, true);
+    }
+
 }
