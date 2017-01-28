@@ -73,7 +73,7 @@ class PersonaController extends Controller
         if (strcmp($usuario[0]->rol, 'empleado') == 0){
             $empleado = DB::table('Empleado')->where('Persona_id', '=', Auth::id())->select()->get();
         }        
-        return view('form.actualizarCliente', array('usuario' => $usuario, 'empleado' => $empleado));
+        return view('form.actualizarCliente', array('usuario' => $usuario));
     }
 
     public function actualizarPersona(Request $request){
