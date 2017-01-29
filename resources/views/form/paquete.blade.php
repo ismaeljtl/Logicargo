@@ -38,21 +38,37 @@
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">*Desde</label>
 				<div class="col-lg-9">
-				<select class="form-control" id="centro_emisor" name="centro_emisor" required>
-                    @foreach($centros_distribucion as $centro)
-						<option value="{{$centro->id}}">{{$centro->nombre}}</option>
-					@endforeach
-				</select>
+					<select class="form-control" id="centro_emisor" name="centro_emisor" required>
+						@foreach($centros_distribucion as $centro)
+							<option value="{{$centro->id}}">{{$centro->nombre}}</option>
+						@endforeach
+					</select>
 				</div>
 			</div>
             <div class="form-group row">
 				<label class="col-lg-3 col-form-label">*Hasta</label>
 				<div class="col-lg-9">
-				<select class="form-control" id="centro_receptor" name="centro_receptor" required>
-                    @foreach($centros_distribucion as $centro)
-						<option value="{{$centro->id}}">{{$centro->nombre}}</option>
-					@endforeach
-				</select>
+					<select class="form-control" id="centro_receptor" name="centro_receptor" required>
+						@foreach($centros_distribucion as $centro)
+							<option value="{{$centro->id}}">{{$centro->nombre}}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label">Frágil?</label>
+				<div class="col-lg-9">
+					<div class="checkbox">
+						<label><input type="checkbox" name="fragil" value="fragil"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label">Prioridad?</label>
+				<div class="col-lg-9">
+					<div class="checkbox">
+						<label><input type="checkbox" name="prioridad" value="prioridad"></label>
+					</div>
 				</div>
 			</div>
             <div class="form-group row">

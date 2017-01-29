@@ -17,6 +17,10 @@
                         <hr class="intro-divider">
                         @if(Auth::check())
                             <h2>{{ucwords(Auth::user()->rol)}}</h2>
+                            <br/>
+                            @if(strcmp(Auth::user()->rol,'admin')==0)
+                                @include('admin.opciones_index')
+                            @endif
                         @else
                             <br/><br/>
                             <h4>¿Aún no estás registrado?</h4>

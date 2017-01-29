@@ -71,11 +71,6 @@ class AuthController extends Controller
     {
         if (Auth::attempt(['user' => $request->input("user"),'password' => $request->input("password")],true))
         {
-            if(strcmp(Auth::user()->user, 'admin') == 0){
-                return redirect('admin.index');
-            }
-
-            $usuario = DB::table('Empleado')->select('Tipo_Empleado_id')->where('Persona_id', '=', Auth::id())->get();
             return redirect('/'); 
         }
         else{

@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('site.welcome');
+    return view('site.index');
 });
-Route::get('admin.index', function () {
-    return view('admin.index');
+
+Route::get('/home', function () {
+    return view('site.index');
 });
 
 //Registro de personas
@@ -60,11 +61,12 @@ Route::get('Logout', 'Auth\AuthController@getLogout');
 Route::get('eliminarCliente', [
             'uses' => 'PersonaController@eliminar',
             'as' => 'eliminarCliente',
-      ]);
+]);
+
 Route::get('eliminarEmpleado', [
             'uses' => 'EmpleadoController@eliminar',
             'as' => 'eliminarEmpleado',
-      ]);
+]);
 
 //Rutas para Actualizar Usuarios
 //Cliente
