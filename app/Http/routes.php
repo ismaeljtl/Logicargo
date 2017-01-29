@@ -106,3 +106,11 @@ Route::get('ConsultaEmpleados',[
             'uses' => 'AdminController@ConsultaEmpleados',
             'as' => 'ConsultaEmpleados',
 ]);
+Route::get('actualizaClientes',[
+            'uses' => 'AdminController@actualizaClientes',
+            'as' => 'actualizaClientes',
+]);
+Route::get('actualizacionClientes/{id}',[
+            'uses' => 'AdminController@actualizacionClientes',
+            'as' => 'actualizacionClientes',
+]);

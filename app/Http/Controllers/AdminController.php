@@ -32,5 +32,19 @@ class AdminController extends Controller
         return view('admin.consultaEmpleados')->with('empleados', json_decode(json_encode($empleados, true)));
    }
 
-   
+   public function actualizaClientes(){
+       $clientes = DB::table('Persona')->select('*')
+                                         ->where('rol', '=', 'persona')
+                                         ->orderBy('user', 'asc')
+                                         ->get();
+
+       return view('admin.actualizaClientes')->with('clientes', json_decode(json_encode($clientes, true)));
+   }
+
+   public function actualizacionClientes($id){
+        $usuario = DB::table('Persona')->where('id', '=', $id)->select()->get();
+        $ciudades = DB::table('Ciudad')->select('id', 'nombre')->orderBy('nombre', 'asc')->get();
+
+        return view('admin.actualizacionClientes')->with('array', array('usuario' => $usuario, 'ciudades' => $ciudades));
+   }
 }

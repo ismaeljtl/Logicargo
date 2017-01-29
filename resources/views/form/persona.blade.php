@@ -69,7 +69,7 @@
 						<option value="{{$ciudad->id}}">{{$ciudad->nombre}}</option>
 					@endforeach
 				</select>
-				</div>
+			</div>
 			</div>
 			<div class="btn-submit" style="text-align:center;">
                 <button type="submit" class="btn btn-info" id="businessForm">Enviar</button>
