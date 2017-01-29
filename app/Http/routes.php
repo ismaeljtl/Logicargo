@@ -95,3 +95,14 @@ Route::post('actualizarEmpleado',[
             'uses' => 'EmpleadoController@actualizarEmpleado',
             'as' => 'actualizarEmpleado',
 ]);
+
+//-------------------------------------------------------------
+//Administrador
+Route::get('ConsultaClientes',[
+            'uses' => 'AdminController@ConsultaClientes',
+            'as' => 'ConsultaClientes',
+]);
+Route::get('ConsultaEmpleados',[
+            'uses' => 'AdminController@ConsultaEmpleados',
+            'as' => 'ConsultaEmpleados',
+]);

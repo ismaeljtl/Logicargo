@@ -2,10 +2,10 @@
     <h3>Consultar Información</h3>
     <ul class="list-inline intro-social-buttons">
         <li>
-            <a href="" class="btn btn-info btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Persona Natural</span></a>
+            <a href="{{ route('ConsultaClientes') }}" class="btn btn-info btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Clientes</span></a>
         </li>
         <li>
-            <a href="" class="btn btn-info btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Empleado</span></a>
+            <a href="{{ route('ConsultaEmpleados') }}" class="btn btn-info btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Empleados</span></a>
         </li>
     </ul>
 </div>
