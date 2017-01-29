@@ -85,4 +85,5 @@ insert into Centro_Distribucion values
 (84, 'Maracaibo', 'Maracaibo', 24, 24),
 (85, 'Cabimas', 'Cabimas', 24, 24),
 (86, 'Machiques', 'Machiques', 24, 24),
-(87, 'Ciudad Ojeda', 'Ciudad Ojeda', 24, 24);
+(87, 'Ciudad Ojeda', 'Ciudad Ojeda', 24, 24),
+(88, 'Caracas', 'Caracas', 10, 10);

@@ -15,7 +15,7 @@
             {{ csrf_field() }}
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#">Realiza un envío</a>
+                    <a href="{{url('/nuevo_envio')}}">Realiza un envío</a>
                 </li>                
                 <li>
                     <a class="name-perfil">{{ Auth::user()->user }}</a>
