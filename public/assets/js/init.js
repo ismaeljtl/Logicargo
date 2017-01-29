@@ -7,6 +7,7 @@ $(document).ready(function(){
 
     getCiudades('#centro_Dist');
     getJefes('#Jefe_id');
+    getPersonas();
 
     $('body > div > div > form > div > div:nth-child(13) > div').on('click', agregarJefe);
 });
@@ -52,12 +53,47 @@ function getJefes(elemento){
             //
         },     
         success: function(data) {
-            console.log(data);
             var str="";
             for (var i = 0; i < data.length; i++) {
                 str += '<option value = '+data[i].id+' name="Jefe">'+data[i].id+'</option>';
                 $(elemento).html(str);
             }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+    });
+}
+
+/* funcion para que no hayan correos repetidos en la BD */
+function getPersonas(){
+    $.ajax({
+        // la URL para la petición
+        url: 'getPersonas',
+        // especifica si será una petición POST o GET
+        type: 'get',
+        // la información a enviar
+        data: {'_token': $('input[name=_token]').val() },
+        // el tipo de información que se espera de respuesta
+        dataType: 'json',   
+        before: function() {
+            //
+        },     
+        success: function(data) {
+            console.log(data);
+            var correoIntroducido = "";
+            $('#correo').on('keyup', function(){
+                correoIntroducido = $('#correo').val();
+                for (var i = 0; i < data.length; i++) {
+                    if (correoIntroducido == data[i].user){
+                        $('.notify').html('Este correo ya se encuentra registrado');
+                    }
+                    else{
+                        $('.notify').html('');
+                    }
+                }
+            });
+            
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
@@ -77,7 +113,7 @@ function agregarJefe(){
 
 function eliminarCli() {
     if (confirm("¿Estás seguro de que deseas eliminar la cuenta?") == true){
-      window.location.href = 'eliminarUsuario'; 
+      window.location.href = 'eliminarCliente'; 
     }
 }
 

@@ -182,4 +182,9 @@ body > .register-empleado > div > form > div > div:nth-child(11) > label{
     background-color: white;
     border-radius: 10px;
 }
+
+.notify{
+    text-align: center;
+    color: red;
+}
 /*Fin Registro Empleado*/

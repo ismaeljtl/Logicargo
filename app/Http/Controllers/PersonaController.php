@@ -35,6 +35,14 @@ class PersonaController extends Controller
             'cedula' => $var['cedula'],
             'Ciudad_id' => $var['ciudades']
         ]);
+
+        DB::table('Historico_Usuario')->insert([
+            'fechaHora' => date("Y-m-d H:i:s"),
+            'accion' => 'registro',
+            'id_Persona' => $id,
+            'user' => $var['correo']
+        ]);
+
         Auth::loginUsingId($id,true);
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
     }
@@ -43,6 +51,14 @@ class PersonaController extends Controller
         $user = Auth::user()->user;
         $id = Auth::id();
         Auth::logout();
+
+        DB::table('Historico_Usuario')->insert([
+            'fechaHora' => date("Y-m-d H:i:s"),
+            'accion' => 'eliminar',
+            'id_Persona' => $id,
+            'user' => $user
+        ]);
+
         DB::table('Persona')->where('user', '=', $user)->delete();
         if (DB::table('Empleado')->where('Persona_id', '=', $id)->select() != null){
             DB::table('Empleado')->where('Persona_id', '=', $id)->delete();
@@ -57,7 +73,35 @@ class PersonaController extends Controller
         if (strcmp($usuario[0]->rol, 'empleado') == 0){
             $empleado = DB::table('Empleado')->where('Persona_id', '=', Auth::id())->select()->get();
         }        
-        return view('form.actualizar', array('usuario' => $usuario, 'empleado' => $empleado));
+        return view('form.actualizarCliente', array('usuario' => $usuario));
+    }
+
+    public function actualizarPersona(Request $request){
+        $var = $request->all();
+
+        if (strcmp($var['clave'], $var['clave1']) == 0){
+            DB::table('Persona')
+            ->where('id', Auth::id())
+            ->update(['user' => $var['correo'],
+                     'password' => Hash::make($var['clave'])
+            ]);
+            
+            DB::table('Historico_Usuario')->insert([
+                'fechaHora' => date("Y-m-d H:i:s"),
+                'accion' => 'actualizacion',
+                'id_Persona' => Auth::id(),
+                'user' => $var['correo']
+            ]);
+            return redirect('/')->with('status', 'Sus datos han sido actualizados exitosamente!');
+        }
+        else{
+            return redirect('actualizarCliente')->with('status', 'Las claves no coinciden, verifique nuevamente');
+        }
+    }
+
+    public function getPersonas(){
+        $correos = DB::table('Persona')->select('user')->orderBy('user', 'asc')->get();
+        return json_encode($correos, true);
     }
 
 }

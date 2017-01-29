@@ -38,7 +38,14 @@ class EmpleadoController extends Controller
             'Ciudad_id' => $var['centro_Dist']
         ]);
 
-        if ($var['Jefe_id'] != null){
+        DB::table('Historico_Usuario')->insert([
+            'fechaHora' => date("Y-m-d H:i:s"),
+            'accion' => 'registro',
+            'id_Persona' => $id,
+            'user' => $var['correo']
+        ]);
+
+        if ($var['tipoEmp'] == 2){
             DB::table('Empleado')->insert([
                 'fechaInicio' => $var['fecha_Inic'],
                 'Persona_id' => $id,
@@ -52,12 +59,66 @@ class EmpleadoController extends Controller
                 'fechaInicio' => $var['fecha_Inic'],
                 'Persona_id' => $id,
                 'Centro_Distribucion_id' => $var['centro_Dist'],
-            'Tipo_Empleado_id' => $var['tipoEmp']
+                'Tipo_Empleado_id' => $var['tipoEmp']
             ]);
         }
 
         Auth::loginUsingId($id,true);
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
+    }
+
+    public function actualizarEmp(){
+        $usuario = DB::table('Persona')->where('id', '=', Auth::id())->select()->get();
+        $empleado = array();
+        if (strcmp($usuario[0]->rol, 'empleado') == 0){
+            $empleado = DB::table('Empleado')->where('Persona_id', '=', Auth::id())->select()->get();
+        }        
+        return view('form.actualizarEmpleado', array('usuario' => $usuario, 'empleado' => $empleado));
+    }
+
+    public function actualizarEmpleado(Request $request){
+        $var = $request->all();
+
+        if (strcmp($var['clave'], $var['clave1']) == 0){
+            DB::table('Persona')
+            ->where('id', Auth::id())
+            ->update(['user' => $var['correo'],
+                     'password' => Hash::make($var['clave'])
+            ]);
+            DB::table('Empleado')
+            ->where('Persona_id', Auth::id())
+            ->update(['Centro_Distribucion_id' => $var['centro_Dist']]);
+
+            DB::table('Historico_Usuario')->insert([
+                'fechaHora' => date("Y-m-d H:i:s"),
+                'accion' => 'actualizacion',
+                'id_Persona' => Auth::id(),
+                'user' => $var['correo']
+            ]);
+
+            return redirect('/')->with('status', 'Sus datos han sido actualizados exitosamente!');
+        }
+        else{
+            return redirect('actualizarCliente')->with('status', 'Las claves no coinciden, verifique nuevamente');
+        }
+    }
+
+    public function eliminar(){
+        $user = Auth::user()->user;
+        $id = Auth::id();
+        Auth::logout();
+
+        DB::table('Historico_Usuario')->insert([
+            'fechaHora' => date("Y-m-d H:i:s"),
+            'accion' => 'eliminar',
+            'id_Persona' => $id,
+            'user' => $user
+        ]);
+
+        DB::table('Empleado')->where('Persona_id', '=', $id)->delete();
+        DB::table('Persona')->where('user', '=', $user)->delete();
+        
+        return redirect('/')->with('status', 'Ha sido eliminado del sistema exitosamente!');
     }
     
 }

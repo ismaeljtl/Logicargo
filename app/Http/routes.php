@@ -14,59 +14,82 @@
 Route::get('/', function () {
     return view('site.welcome');
 });
-Route::get('indexCli', function () {
-    return view('site.indexCli');
-});
-Route::get('indexEmp', function () {
-    return view('site.indexEmp');
+Route::get('admin.index', function () {
+    return view('admin.index');
 });
 
 //Registro de personas
 Route::get('formPersona', [
             'uses' => 'PersonaController@index',
             'as' => 'formPersona',     
-      ]);
+]);
 Route::post('createPersona', [
             'uses' => 'PersonaController@create',
             'as' => 'createPersona',     
-      ]);
+]);
       
 Route::get('formEmpleado', [
             'uses' => 'EmpleadoController@index',
             'as' => 'formEmpleado',     
-      ]);
+]);
 Route::post('createEmpleado', [
             'uses' => 'EmpleadoController@create',
             'as' => 'createEmpleado',     
-      ]);
+]);
 
 Route::get('getCiudades', [
             'uses' => 'PersonaController@getCiudades',
             'as' => 'getCiudades',
-      ]);
+]);
 
 Route::get('getJefes', [
             'uses' => 'EmpleadoController@getJefes',
             'as' => 'getJefes',
-      ]);
+]);
+
+Route::get('getPersonas', [
+            'uses' => 'PersonaController@getPersonas',
+            'as' => 'getPersonas',
+]);
 
 //Rutas para Login de Usuarios
 Route::post('Login', 'Auth\AuthController@postLogin');
 Route::get('Logout', 'Auth\AuthController@getLogout');
 
 //Rutas para Eliminar Usuarios
-Route::get('eliminarUsuario', [
+Route::get('eliminarCliente', [
             'uses' => 'PersonaController@eliminar',
-            'as' => 'eliminarUsuario',
+            'as' => 'eliminarCliente',
+      ]);
+Route::get('eliminarEmpleado', [
+            'uses' => 'EmpleadoController@eliminar',
+            'as' => 'eliminarEmpleado',
       ]);
 
 //Rutas para Actualizar Usuarios
-Route::get('actualizar',[
+//Cliente
+Route::get('actualizarCliente',[
             'uses' => 'PersonaController@actualizar',
             'as' => 'actualizar',
-      ]);
+]);
 
 // Rutas para envíos{
       Route::get('/nuevo_envio', 'EnvioController@index');
       Route::post('/realizar_envio', 'EnvioController@realizarEnvio');
 //}
+
+Route::post('actualizarPersona',[
+            'uses' => 'PersonaController@actualizarPersona',
+            'as' => 'actualizarPersona',
+]);
+
+//Empleado
+Route::get('actualizarEmp',[
+            'uses' => 'EmpleadoController@actualizarEmp',
+            'as' => 'actualizarEmp',
+]);
+
+Route::post('actualizarEmpleado',[
+            'uses' => 'EmpleadoController@actualizarEmpleado',
+            'as' => 'actualizarEmpleado',
+]);
