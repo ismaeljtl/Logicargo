@@ -114,7 +114,7 @@ Route::get('cargaClientes/{id}',[
             'uses' => 'AdminController@cargaClientes',
             'as' => 'cargaClientes',
 ]);
-Route::post('actualizacionClientes', [
-            'uses' => 'AdminController@actualizacionClientes',
-            'as' => 'actualizacionClientes',
+Route::post('actualizaCli', [
+            'uses' => 'AdminController@actualizaCli',
+            'as' => 'actualizaCli',
 ]);

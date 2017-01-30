@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="container-horizontal">
-		<form class="form-group" method="POST" action="actualizacionClientes">
+		<form class="form-group" action="actualizaCli" method="POST">
 		{{ csrf_field() }}
 		<div class="col-sm-4 col-sm-offset-4">
 	        <h2>Actualización de Datos</h2>

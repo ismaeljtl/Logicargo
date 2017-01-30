@@ -48,8 +48,9 @@ class AdminController extends Controller
         return view('admin.actualizacionClientes')->with('array', array('usuario' => $usuario, 'ciudades' => $ciudades));
    }
 
-   public function actualizacionClientes(Request $request){
+   public function actualizaCli(Request $request){
+       return 'hola';/*
         $var = $request->all();
-        return $var;
+        return $var;*/
    }
 }
