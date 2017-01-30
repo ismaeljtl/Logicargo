@@ -192,3 +192,7 @@ body > .register-empleado > div > form > div > div:nth-child(11) > label{
     color: red;
 }
 /*Fin Registro Empleado*/
+
+.warning{
+    color: red;
+}
