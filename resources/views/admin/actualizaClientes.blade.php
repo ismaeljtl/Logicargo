@@ -30,7 +30,7 @@
                 <td>{{$clientes[$i]->segundo_apellido}}</td> 
                 <td>{{$clientes[$i]->fecha_Nac}}</td> 
                 <td>{{$clientes[$i]->cedula}}</td> 
-                <td><a href="actualizacionClientes/{{$clientes[$i]->id}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+                <td><a href="cargaClientes/{{$clientes[$i]->id}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
             </tr>
     @endfor
     </table>

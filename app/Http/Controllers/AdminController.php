@@ -41,10 +41,15 @@ class AdminController extends Controller
        return view('admin.actualizaClientes')->with('clientes', json_decode(json_encode($clientes, true)));
    }
 
-   public function actualizacionClientes($id){
+   public function CargaClientes($id){
         $usuario = DB::table('Persona')->where('id', '=', $id)->select()->get();
         $ciudades = DB::table('Ciudad')->select('id', 'nombre')->orderBy('nombre', 'asc')->get();
 
         return view('admin.actualizacionClientes')->with('array', array('usuario' => $usuario, 'ciudades' => $ciudades));
+   }
+
+   public function actualizacionClientes(Request $request){
+        $var = $request->all();
+        return $var;
    }
 }

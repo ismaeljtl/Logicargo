@@ -110,7 +110,11 @@ Route::get('actualizaClientes',[
             'uses' => 'AdminController@actualizaClientes',
             'as' => 'actualizaClientes',
 ]);
-Route::get('actualizacionClientes/{id}',[
+Route::get('cargaClientes/{id}',[
+            'uses' => 'AdminController@cargaClientes',
+            'as' => 'cargaClientes',
+]);
+Route::post('actualizacionClientes', [
             'uses' => 'AdminController@actualizacionClientes',
             'as' => 'actualizacionClientes',
 ]);

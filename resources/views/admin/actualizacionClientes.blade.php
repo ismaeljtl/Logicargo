@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="container-horizontal">
-		<form class="form-group" method="POST" action="">
+		<form class="form-group" method="POST" action="actualizacionClientes">
 		{{ csrf_field() }}
 		<div class="col-sm-4 col-sm-offset-4">
 	        <h2>Actualización de Datos</h2>
@@ -65,15 +65,15 @@
 					@endforeach
 				</select>
 			</div>
-            </div>
-			<div class="btn-submit" style="text-align:center;">
-                <button type="submit" class="btn btn-info" id="businessForm">Enviar</button>
-            </div>
-			<br/>
-			<div class="col-lg-12 regresar">
-				<a href="{{route('actualizaClientes')}}">Regresar</a>
-			</div>
-	    </div>
+        </div>
+            
+        <div class="btn-submit" style="text-align:center;">
+            <button type="submit" class="btn btn-info" id="businessForm">Enviar</button>
+        </div>
+        <br/>
+        <div class="col-lg-12 regresar">
+            <a href="{{route('actualizaClientes')}}">Regresar</a>
+        </div>
 	    </form>
     </div>
 
