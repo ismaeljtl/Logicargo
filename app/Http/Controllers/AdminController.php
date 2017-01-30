@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Hash;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -49,8 +48,30 @@ class AdminController extends Controller
    }
 
    public function actualizaCli(Request $request){
-       return 'hola';/*
         $var = $request->all();
-        return $var;*/
+
+        $id = DB::table('Persona')->where('user', '=', $var['correo'])->select('id')->get();
+        $id = $id[0]->id;
+
+        DB::table('Persona')
+        ->where('id', $id)
+        ->update(['user' => $var['correo'],
+                'nombre' => $var['nombre'],
+                'segundo_nombre' => $var['segundo_nombre'],
+                'apellido' => $var['apellido'],
+                'segundo_apellido' => $var['segundo_apellido'],
+                'fecha_Nac' => $var['fecha_Nac'],
+                'cedula' => $var['cedula'],
+                'Ciudad_id' => $var['ciudades'],
+        ]);
+        
+        DB::table('Historico_Usuario')->insert([
+            'fechaHora' => date("Y-m-d H:i:s"),
+            'accion' => 'actualizacion',
+            'id_Persona' => $id,
+            'user' => $var['correo']
+        ]);
+        return redirect('/')->with('status', 'Los datos han sido actualizados exitosamente!');
+        
    }
 }

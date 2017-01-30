@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="container-horizontal">
-		<form class="form-group" action="actualizaCli" method="POST">
+		<form class="form-group" action="{{route('actualizaCli')}}" method="post">
 		{{ csrf_field() }}
 		<div class="col-sm-4 col-sm-offset-4">
 	        <h2>Actualización de Datos</h2>
