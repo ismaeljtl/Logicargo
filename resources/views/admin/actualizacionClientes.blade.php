@@ -12,8 +12,7 @@
 			<div class="form-group row">
 				<label class="col-lg-3 col-form-label">Correo de Usuario</label>
 				<div class="col-lg-9">
-					<input class="form-control" type="email" id="correo" name="correo" value="{{$array['usuario'][0]->user}}">
-					<label class="notify">*no deberías cambiar tu correo electrónico</label>
+					<input readonly="readonly" class="form-control" type="email" id="correo" name="correo" value="{{$array['usuario'][0]->user}}">
 				</div>
 			</div>
             <div class="form-group row">
