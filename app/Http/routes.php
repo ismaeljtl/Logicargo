@@ -106,6 +106,7 @@ Route::get('ConsultaEmpleados',[
             'uses' => 'AdminController@ConsultaEmpleados',
             'as' => 'ConsultaEmpleados',
 ]);
+
 Route::get('actualizaClientes',[
             'uses' => 'AdminController@actualizaClientes',
             'as' => 'actualizaClientes',
@@ -117,4 +118,17 @@ Route::get('cargaClientes/{id}',[
 Route::post('actualizaCli', [
             'uses' => 'AdminController@actualizaCli',
             'as' => 'actualizaCli',
+]);
+
+Route::get('actualizaEmpleado',[
+            'uses' => 'AdminController@actualizaEmpleado',
+            'as' => 'actualizaEmpleado',
+]);
+Route::get('cargaEmpleados/{id}',[
+            'uses' => 'AdminController@cargaEmpleados',
+            'as' => 'cargaEmpleados',
+]);
+Route::post('actualizaEmp', [
+            'uses' => 'AdminController@actualizaEmp',
+            'as' => 'actualizaEmp',
 ]);

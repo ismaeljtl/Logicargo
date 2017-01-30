@@ -16,7 +16,7 @@
             <a href="{{ route('actualizaClientes') }}" class="btn btn-info btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Clientes</span></a>
         </li>
         <li>
-            <a href="" class="btn btn-info btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Empleados</span></a>
+            <a href="{{ route('actualizaEmpleado') }}" class="btn btn-info btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Empleados</span></a>
         </li>
     </ul>
 </div>

@@ -16,8 +16,8 @@ class EmpleadoController extends Controller
     }
 
     public function getJefes(){
-        $jefes = DB::table('Empleado')->select('id')
-                                         ->where('Tipo_Empleado_id', '=', '2')
+        $jefes = DB::table('Empleado')->select('Persona_id')
+                                         ->where('Tipo_Empleado_id', '=', '1')
                                          ->orderBy('id', 'asc')
                                          ->get();
         return json_encode($jefes, true);
