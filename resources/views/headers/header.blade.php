@@ -9,8 +9,8 @@
             </button>
             <a class="navbar-brand topnav" href="{{url('/')}}">
                 LOGICARGO 
-                @if(session()->has('centro distribucion')) 
-                    - {{strtoupper(session()->get('centro distribucion'))}} 
+                @if(session()->has('centro_distribucion')) 
+                    - {{strtoupper(session()->get('centro_distribucion'))}} 
                 @endif
             </a>
         </div>
@@ -21,7 +21,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="{{url('/nuevo_envio')}}">Realiza un envío</a>
-                </li>                
+                </li>   
+                @if(session()->has('tipo_empleado_id'))
+                    @if(session()->get('tipo_empleado_id')==1)
+                         <li>
+                            <a href="{{url('/gestion_paquetes')}}">Gestionar paquetes</a>
+                        </li> 
+                    @endif
+                @endif        
                 <li>
                     <a class="name-perfil">{{ Auth::user()->user }}</a>
                 </li>

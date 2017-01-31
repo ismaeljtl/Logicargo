@@ -11,14 +11,18 @@
                     <div class="intro-message">
                         <h1>
                             LOGICARGO
-                            @if(session()->has('centro distribucion')) 
-                            - {{strtoupper(session()->get('centro distribucion'))}} 
+                            @if(session()->has('centro_distribucion')) 
+                            - {{strtoupper(session()->get('centro_distribucion'))}} 
                             @endif
                         </h1>
                         <h3>La empresa donde hacer tus envíos</h3>
                         <hr class="intro-divider">
                         @if(Auth::check())
-                            <h2>{{ucwords(Auth::user()->rol)}}</h2>
+                            @if(strcmp(Auth::user()->rol,'empleado')==0)
+                                <h2>{{ucwords(session()->get('tipo_empleado_tipo'))}}</h2>
+                            @else
+                                <h2>{{ucwords(Auth::user()->rol)}}</h2>
+                            @endif
                             <br/>
                             @if(strcmp(Auth::user()->rol,'admin')==0)
                                 @include('admin.opciones_index')

@@ -8,6 +8,9 @@ use Hash;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Persona;
+use App\Empleado;
+use App\Tipo_Empleado;
 
 class EmpleadoController extends Controller
 {
@@ -67,7 +70,10 @@ class EmpleadoController extends Controller
         
         $empleado = Empleado::select()->where('Persona_id',Auth::user()->id)->first(); 
         $CentroDistribucion = Centro_Distribucion::select()->where('id',$empleado->Centro_Distribucion_id)->first(); 
-        session()->put('centro distribucion', $CentroDistribucion->nombre);
+        $tipoEmpleado = Tipo_Empleado::select()->where('id',$empleado->Tipo_Empleado_id)->first(); 
+        session()->put('centro_distribucion', $CentroDistribucion->nombre);
+        session()->put('tipo_empleado_id',$empleado->Tipo_Empleado_id);
+        session()->put('tipo_empleado_tipo',$tipoEmpleado->tipo);
             
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
     }

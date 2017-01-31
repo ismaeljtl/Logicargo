@@ -78,6 +78,7 @@ Route::get('actualizarCliente',[
 // Rutas para envíos{
       Route::get('/nuevo_envio', 'EnvioController@index');
       Route::post('/realizar_envio', 'EnvioController@realizarEnvio');
+      Route::get('/gestion_paquetes', 'EnvioController@gestionPaquetes');
 //}
 
 Route::post('actualizarPersona',[

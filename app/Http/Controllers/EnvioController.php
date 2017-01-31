@@ -10,6 +10,8 @@ use DB;
 use Auth;
 use App\Paquete;
 use App\Persona;
+use App\Empleado;
+use App\Tipo_Empleado;
 use App\Historico_Paquete;
 
 class EnvioController extends Controller
@@ -51,6 +53,17 @@ class EnvioController extends Controller
         }
         else
             return redirect()->back()->with('status', 'El usuario a quien desea enviarle el paquete no está registrado!');
+    }
+
+    public function gestionPaquetes(){
+        $empleado = Empleado::select()->where('Persona_id',Auth::user()->id)->first(); 
+        if(count($empleado)>0){
+            $tipoEmpleado = Tipo_Empleado::select()->where('id',$empleado->Tipo_Empleado_id)->first(); 
+            if($tipoEmpleado->id==1)
+                return view('employee.gestion_paquete');
+        }
+        return redirect('/');
+
     }
 
 }

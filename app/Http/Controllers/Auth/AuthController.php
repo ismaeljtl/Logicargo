@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Persona;
 use App\Empleado;
+use App\Tipo_Empleado;
 use App\Centro_Distribucion;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -76,7 +77,10 @@ class AuthController extends Controller
             $empleado = Empleado::select()->where('Persona_id',Auth::user()->id)->first(); 
             if(count($empleado)>0){
                 $CentroDistribucion = Centro_Distribucion::select()->where('id',$empleado->Centro_Distribucion_id)->first(); 
-                session()->put('centro distribucion', $CentroDistribucion->nombre);
+                $tipoEmpleado = Tipo_Empleado::select()->where('id',$empleado->Tipo_Empleado_id)->first(); 
+                session()->put('centro_distribucion', $CentroDistribucion->nombre);
+                session()->put('tipo_empleado_id',$empleado->Tipo_Empleado_id);
+                session()->put('tipo_empleado_tipo',$tipoEmpleado->tipo);
             }
             return redirect('/'); 
         }
