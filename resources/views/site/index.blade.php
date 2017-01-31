@@ -2,9 +2,6 @@
 
 @section('site-section', 'welcome')
 
-@section('header')
-@yield('header')
-
 @section('main')
 
     <div class="intro-header">
