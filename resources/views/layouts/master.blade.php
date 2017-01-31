@@ -7,9 +7,9 @@
     <meta name="csrf_token" content="{{ csrf_token() }}"/>
     <title>LOGICARGO</title>
     <!-- Bootstrap Core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
@@ -33,10 +33,10 @@
     </div>
 
     <!-- jQuery -->
-    <script src="assets/js/jquery.js"></script>
+    <script src="{{url('assets/js/jquery.js')}}"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/init.js"></script>
+    <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{url('assets/js/init.js')}}"></script>
 
 </body>
 </html>

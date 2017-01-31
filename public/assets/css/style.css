@@ -37,6 +37,10 @@ h6 {
     margin-top: 7px;
 }
 
+table tr th, table tr td{
+    text-align: center;
+}
+
 .btn-circle {
     width: 30px;
     height: 30px;
@@ -185,6 +189,10 @@ body > .register-empleado > div > form > div > div:nth-child(11) > label{
 
 .notify{
     text-align: center;
+    color: red;
+}
+
+.glyphicon-remove{
     color: red;
 }
 /*Fin Registro Empleado*/

@@ -28,7 +28,6 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             @if(strcmp(Auth::user()->user, 'admin') == 0)
-                                <li><a href="#">Opciones</a></li>
                                 <li><a href="{{ url('Logout') }}">Salir de Aplicación</a></li>
                             @else
                                 <li><a href="actualizarCliente">Editar Datos</a></li>

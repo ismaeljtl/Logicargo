@@ -55,7 +55,7 @@ function getJefes(elemento){
         success: function(data) {
             var str="";
             for (var i = 0; i < data.length; i++) {
-                str += '<option value = '+data[i].id+' name="Jefe">'+data[i].id+'</option>';
+                str += '<option value = '+data[i].Persona_id+' name="Jefe">'+data[i].Persona_id+'</option>';
                 $(elemento).html(str);
             }
         },
