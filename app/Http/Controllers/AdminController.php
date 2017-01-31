@@ -11,7 +11,8 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
    public function ConsultaClientes(){
-        $clientes = DB::table('Persona')->select('*')
+        $clientes = DB::table('Persona')->select('Persona.*', 'Ciudad.nombre as nombreCiudad')
+                                        ->join('Ciudad', 'Ciudad.id', '=', 'Persona.Ciudad_id')
                                          ->where('rol', '=', 'persona')
                                          ->orderBy('user', 'asc')
                                          ->get();
@@ -148,5 +149,54 @@ class AdminController extends Controller
         ]);
         return redirect('/')->with('status', 'Los datos han sido actualizados exitosamente!');
         
+   }
+
+   public function eliminaCliente(){
+       $clientes = DB::table('Persona')->select('Persona.*', 'Ciudad.nombre as nombreCiudad')
+                                        ->join('Ciudad', 'Ciudad.id', '=', 'Persona.Ciudad_id')
+                                         ->where('rol', '=', 'persona')
+                                         ->orderBy('user', 'asc')
+                                         ->get();
+
+        return view('admin.eliminaCliente')->with('clientes', json_decode(json_encode($clientes, true)));
+   }
+
+   public function eliminarClientes($id, $user){
+        DB::table('Historico_Usuario')->insert([
+            'fechaHora' => date("Y-m-d H:i:s"),
+            'accion' => 'eliminar',
+            'id_Persona' => $id,
+            'user' => $user
+        ]);
+
+        DB::table('Persona')->where('id', '=', $id)->delete();
+        
+        return redirect('/')->with('status', 'El Cliente ha sido eliminado del sistema exitosamente!');
+   }
+
+   public function eliminaEmpleado(){
+       $empleados = DB::table('Persona')->join('Empleado', 'Persona.id', '=', 'Empleado.Persona_id')
+                                         ->join('Tipo_Empleado', 'Tipo_Empleado.id', '=', 'Empleado.Tipo_Empleado_id')
+                                         ->join('Ciudad', 'Ciudad.id', '=', 'Empleado.Centro_Distribucion_id')
+                                         ->select('Empleado.*', 'Persona.*', 'Tipo_Empleado.tipo', 'Ciudad.nombre as nombreCiudad')
+                                         ->orderBy('user', 'asc')
+                                         ->groupBy('Empleado.Persona_id')
+                                         ->get();
+
+        return view('admin.eliminarEmpleado')->with('empleados', json_decode(json_encode($empleados, true)));
+   }
+
+   public function eliminarEmpleado($id, $user){
+        DB::table('Historico_Usuario')->insert([
+            'fechaHora' => date("Y-m-d H:i:s"),
+            'accion' => 'eliminar',
+            'id_Persona' => $id,
+            'user' => $user
+        ]);
+
+        DB::table('Empleado')->where('Persona_id', '=', $id)->delete();
+        DB::table('Persona')->where('id', '=', $id)->delete();
+        
+        return redirect('/')->with('status', 'El Empleado ha sido eliminado del sistema exitosamente!');
    }
 }

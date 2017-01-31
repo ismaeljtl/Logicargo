@@ -98,6 +98,7 @@ Route::post('actualizarEmpleado',[
 
 //-------------------------------------------------------------
 //Administrador
+//Consultas
 Route::get('ConsultaClientes',[
             'uses' => 'AdminController@ConsultaClientes',
             'as' => 'ConsultaClientes',
@@ -106,7 +107,7 @@ Route::get('ConsultaEmpleados',[
             'uses' => 'AdminController@ConsultaEmpleados',
             'as' => 'ConsultaEmpleados',
 ]);
-
+//Actulizaciones Clientes
 Route::get('actualizaClientes',[
             'uses' => 'AdminController@actualizaClientes',
             'as' => 'actualizaClientes',
@@ -119,7 +120,7 @@ Route::post('actualizaCli', [
             'uses' => 'AdminController@actualizaCli',
             'as' => 'actualizaCli',
 ]);
-
+//Actualizaciones Empleados
 Route::get('actualizaEmpleado',[
             'uses' => 'AdminController@actualizaEmpleado',
             'as' => 'actualizaEmpleado',
@@ -131,4 +132,22 @@ Route::get('cargaEmpleados/{id}',[
 Route::post('actualizaEmp', [
             'uses' => 'AdminController@actualizaEmp',
             'as' => 'actualizaEmp',
+]);
+//Eliminar Cliente
+Route::get('eliminaCliente',[
+            'uses' => 'AdminController@eliminaCliente',
+            'as' => 'eliminaCliente',
+]);
+Route::get('eliminarClientes/{id}/{user}',[
+            'uses' => 'AdminController@eliminarClientes',
+            'as' => 'eliminarClientes',
+]);
+//Eliminar Empleado 
+Route::get('eliminaEmpleado',[
+            'uses' => 'AdminController@eliminaEmpleado',
+            'as' => 'eliminaEmpleado',
+]);
+Route::get('eliminarEmpleado/{id}/{user}',[
+            'uses' => 'AdminController@eliminarEmpleado',
+            'as' => 'eliminarEmpleado',
 ]);

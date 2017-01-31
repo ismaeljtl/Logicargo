@@ -116,7 +116,7 @@ class EmpleadoController extends Controller
         ]);
 
         DB::table('Empleado')->where('Persona_id', '=', $id)->delete();
-        DB::table('Persona')->where('user', '=', $user)->delete();
+        DB::table('Persona')->where('id', '=', $id)->delete();
         
         return redirect('/')->with('status', 'Ha sido eliminado del sistema exitosamente!');
     }

@@ -24,10 +24,10 @@
     <h3>Eliminar Información</h3>
     <ul class="list-inline intro-social-buttons">
         <li>
-            <a href="" class="btn btn-info btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Clientes</span></a>
+            <a href="{{ route('eliminaCliente') }}" class="btn btn-info btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Clientes</span></a>
         </li>
         <li>
-            <a href="" class="btn btn-info btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Empleados</span></a>
+            <a href="{{ route('eliminaEmpleado') }}" class="btn btn-info btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Empleados</span></a>
         </li>
     </ul>
 </div>

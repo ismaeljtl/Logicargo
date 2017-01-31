@@ -191,4 +191,8 @@ body > .register-empleado > div > form > div > div:nth-child(11) > label{
     text-align: center;
     color: red;
 }
+
+.glyphicon-remove{
+    color: red;
+}
 /*Fin Registro Empleado*/
