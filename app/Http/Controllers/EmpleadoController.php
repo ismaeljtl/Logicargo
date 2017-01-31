@@ -64,6 +64,11 @@ class EmpleadoController extends Controller
         }
 
         Auth::loginUsingId($id,true);
+        
+        $empleado = Empleado::select()->where('Persona_id',Auth::user()->id)->first(); 
+        $CentroDistribucion = Centro_Distribucion::select()->where('id',$empleado->Centro_Distribucion_id)->first(); 
+        session()->put('centro distribucion', $CentroDistribucion->nombre);
+            
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
     }
 

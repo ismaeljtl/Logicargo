@@ -7,7 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="{{url('/')}}">LOGICARGO</a>
+            <a class="navbar-brand topnav" href="{{url('/')}}">
+                LOGICARGO 
+                @if(session()->has('centro distribucion')) 
+                    - {{strtoupper(session()->get('centro distribucion'))}} 
+                @endif
+            </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Persona;
+use App\Empleado;
+use App\Centro_Distribucion;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -71,6 +73,11 @@ class AuthController extends Controller
     {
         if (Auth::attempt(['user' => $request->input("user"),'password' => $request->input("password")],true))
         {
+            $empleado = Empleado::select()->where('Persona_id',Auth::user()->id)->first(); 
+            if(count($empleado)>0){
+                $CentroDistribucion = Centro_Distribucion::select()->where('id',$empleado->Centro_Distribucion_id)->first(); 
+                session()->put('centro distribucion', $CentroDistribucion->nombre);
+            }
             return redirect('/'); 
         }
         else{
@@ -80,6 +87,7 @@ class AuthController extends Controller
 
     public function getLogout(){   
         Auth::logout();
+        session()->flush();
         return redirect('/'); 
     }
 }

@@ -9,7 +9,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>LOGICARGO</h1>
+                        <h1>
+                            LOGICARGO
+                            @if(session()->has('centro distribucion')) 
+                            - {{strtoupper(session()->get('centro distribucion'))}} 
+                            @endif
+                        </h1>
                         <h3>La empresa donde hacer tus envíos</h3>
                         <hr class="intro-divider">
                         @if(Auth::check())
