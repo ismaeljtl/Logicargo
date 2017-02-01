@@ -40,7 +40,10 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             @if(strcmp(Auth::user()->user, 'admin') == 0)
-                                <li><a href="{{ url('Logout') }}">Salir de Aplicación</a></li>
+                            <li><a href="{{ route('HistoricoClientes') }}">Historico de Clientes</a></li>
+                            <li><a href="{{ route('HistoricoEmpelados') }}">Historico de Empleados</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ url('Logout') }}">Salir de Aplicación</a></li>
                             @else
                                 <li><a href="actualizarCliente">Editar Datos</a></li>
                                 <li><a href="{{ url('Logout') }}">Salir de Aplicación</a></li>

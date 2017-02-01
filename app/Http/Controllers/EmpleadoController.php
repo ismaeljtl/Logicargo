@@ -45,7 +45,8 @@ class EmpleadoController extends Controller
             'fechaHora' => date("Y-m-d H:i:s"),
             'accion' => 'registro',
             'id_Persona' => $id,
-            'user' => $var['correo']
+            'user' => $var['correo'],
+            'rol' => 'empleado'
         ]);
 
         if ($var['tipoEmp'] == 2){
@@ -68,12 +69,7 @@ class EmpleadoController extends Controller
 
         Auth::loginUsingId($id,true);
         
-        $empleado = Empleado::select()->where('Persona_id',Auth::user()->id)->first(); 
-        $CentroDistribucion = Centro_Distribucion::select()->where('id',$empleado->Centro_Distribucion_id)->first(); 
-        $tipoEmpleado = Tipo_Empleado::select()->where('id',$empleado->Tipo_Empleado_id)->first(); 
-        session()->put('centro_distribucion', $CentroDistribucion->nombre);
-        session()->put('tipo_empleado_id',$empleado->Tipo_Empleado_id);
-        session()->put('tipo_empleado_tipo',$tipoEmpleado->tipo);
+        
             
         return redirect('/')->with('status', 'Ha sido registrado en el sistema exitosamente!');
     }
@@ -104,7 +100,8 @@ class EmpleadoController extends Controller
                 'fechaHora' => date("Y-m-d H:i:s"),
                 'accion' => 'actualizacion',
                 'id_Persona' => Auth::id(),
-                'user' => $var['correo']
+                'user' => $var['correo'],
+                'rol' => 'empleado'
             ]);
 
             return redirect('/')->with('status', 'Sus datos han sido actualizados exitosamente!');
@@ -123,7 +120,8 @@ class EmpleadoController extends Controller
             'fechaHora' => date("Y-m-d H:i:s"),
             'accion' => 'eliminar',
             'id_Persona' => $id,
-            'user' => $user
+            'user' => $user,
+            'rol' => 'empleado'
         ]);
 
         DB::table('Empleado')->where('Persona_id', '=', $id)->delete();

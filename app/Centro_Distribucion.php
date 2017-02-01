@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Centro_Distribucion;
 
 class Centro_Distribucion extends Model
 {

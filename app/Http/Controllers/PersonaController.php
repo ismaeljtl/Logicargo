@@ -40,7 +40,8 @@ class PersonaController extends Controller
             'fechaHora' => date("Y-m-d H:i:s"),
             'accion' => 'registro',
             'id_Persona' => $id,
-            'user' => $var['correo']
+            'user' => $var['correo'],
+            'rol' => 'cliente'
         ]);
 
         Auth::loginUsingId($id,true);
@@ -56,7 +57,8 @@ class PersonaController extends Controller
             'fechaHora' => date("Y-m-d H:i:s"),
             'accion' => 'eliminar',
             'id_Persona' => $id,
-            'user' => $user
+            'user' => $user,
+            'rol' => 'cliente'
         ]);
 
         DB::table('Persona')->where('user', '=', $user)->delete();
@@ -90,7 +92,8 @@ class PersonaController extends Controller
                 'fechaHora' => date("Y-m-d H:i:s"),
                 'accion' => 'actualizacion',
                 'id_Persona' => Auth::id(),
-                'user' => $var['correo']
+                'user' => $var['correo'],
+                'rol' => 'cliente'
             ]);
             return redirect('/')->with('status', 'Sus datos han sido actualizados exitosamente!');
         }

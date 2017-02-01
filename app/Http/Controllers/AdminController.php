@@ -70,7 +70,8 @@ class AdminController extends Controller
             'fechaHora' => date("Y-m-d H:i:s"),
             'accion' => 'actualizacion',
             'id_Persona' => $id,
-            'user' => $var['correo']
+            'user' => $var['correo'],
+            'rol' => 'cliente'
         ]);
         return redirect('/')->with('status', 'Los datos han sido actualizados exitosamente!');
         
@@ -145,7 +146,8 @@ class AdminController extends Controller
             'fechaHora' => date("Y-m-d H:i:s"),
             'accion' => 'actualizacion',
             'id_Persona' => $id,
-            'user' => $var['correo']
+            'user' => $var['correo'],
+            'rol' => 'empleado'
         ]);
         return redirect('/')->with('status', 'Los datos han sido actualizados exitosamente!');
         
@@ -166,7 +168,8 @@ class AdminController extends Controller
             'fechaHora' => date("Y-m-d H:i:s"),
             'accion' => 'eliminar',
             'id_Persona' => $id,
-            'user' => $user
+            'user' => $user,
+            'rol' => 'cliente'
         ]);
 
         DB::table('Persona')->where('id', '=', $id)->delete();
@@ -191,12 +194,29 @@ class AdminController extends Controller
             'fechaHora' => date("Y-m-d H:i:s"),
             'accion' => 'eliminar',
             'id_Persona' => $id,
-            'user' => $user
+            'user' => $user,
+            'rol' => 'empleado'
         ]);
 
         DB::table('Empleado')->where('Persona_id', '=', $id)->delete();
         DB::table('Persona')->where('id', '=', $id)->delete();
         
         return redirect('/')->with('status', 'El Empleado ha sido eliminado del sistema exitosamente!');
+   }
+
+   public function HistoricoClientes(){
+       $usuarios = DB::table('Historico_Usuario')->select('Historico_Usuario.*')
+                                                ->where('Historico_Usuario.rol', '=', 'cliente')
+                                                ->get();
+
+        return view('admin.historicoClientes')->with('array', array('usuarios' => $usuarios));   
+   }
+
+   public function HistoricoEmpelados(){
+       $usuarios = DB::table('Historico_Usuario')->select('Historico_Usuario.*')
+                                                ->where('Historico_Usuario.rol', '=', 'empleado')
+                                                ->get();
+                                     
+        return view('admin.historicoEmpleados')->with('array', json_decode(json_encode($usuarios, true)));
    }
 }

@@ -153,3 +153,13 @@ Route::get('eliminarEmpleado/{id}/{user}',[
             'uses' => 'AdminController@eliminarEmpleado',
             'as' => 'eliminarEmpleado',
 ]);
+//Consulta Historico Clientes
+Route::get('HistoricoClientes',[
+            'uses' => 'AdminController@HistoricoClientes',
+            'as' => 'HistoricoClientes',
+]);
+//Consulta Historico Empleados
+Route::get('HistoricoEmpelados',[
+            'uses' => 'AdminController@HistoricoEmpelados',
+            'as' => 'HistoricoEmpelados',
+]);
