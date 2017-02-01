@@ -37,6 +37,17 @@ h6 {
     margin-top: 7px;
 }
 
+table{ background: white; }
+table thead{ background: #bebee8;}
+.submit-table{
+    background: transparent;
+    border: none;
+}
+.submit-table span{ color: #337ab7;}
+.submit-table span:hover{ text-decoration: underline; color: #23527c; }
+
+
+
 table tr th, table tr td{
     text-align: center;
 }
@@ -100,6 +111,9 @@ table tr th, table tr td{
 .intro-message > h3 {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
+
+.glyphicon-ok{ color: green; }
+.glyphicon-remove{ color: red; }
 
 @media(max-width:767px) {
     .intro-message {

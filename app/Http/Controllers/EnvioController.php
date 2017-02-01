@@ -59,11 +59,47 @@ class EnvioController extends Controller
         $empleado = Empleado::select()->where('Persona_id',Auth::user()->id)->first(); 
         if(count($empleado)>0){
             $tipoEmpleado = Tipo_Empleado::select()->where('id',$empleado->Tipo_Empleado_id)->first(); 
-            if($tipoEmpleado->id==1)
-                return view('employee.gestion_paquete');
+            if($tipoEmpleado->id==1){
+                $paquetes = DB::table('Paquete')
+                    ->join('Persona as P1','P1.id','=','Paquete.Persona_idEmisor')
+                    ->join('Persona as P2','P2.id','=','Paquete.Persona_idReceptor')
+                    ->join('Centro_Distribucion as C1','C1.id','=','Paquete.Centro_Distribucion_idEmisor')
+                    ->join('Centro_Distribucion as C2','C2.id','=','Paquete.Centro_Distribucion_idReceptor')
+                    ->select(DB::raw(
+                        'Paquete.id, 
+                        Paquete.peso, 
+                        Paquete.volumen,
+                        Paquete.fragilidad,  
+                        Paquete.prioridad, 
+                        P1.nombre as personaEmisor,
+                        P2.nombre as personaReceptor,
+                        C1.nombre as centroEmisor,
+                        C2.nombre as centroReceptor,
+                        (select count(*) from Itinerario where Paquete_id = Paquete.id) as numItinerario'
+                    ))
+                    ->where('Paquete.Centro_Distribucion_idEmisor',$empleado->Centro_Distribucion_id)
+                    ->get();
+                return view('employee.gestion_paquete',['paquetes' => $paquetes]);
+            }
         }
         return redirect('/');
 
+    }
+
+    public function asignarItinerario(Request $request){
+        if ($request->isMethod('post')) {
+            
+            return $request->paquete_id;
+        }
+        else{
+            $empleado = Empleado::select()->where('Persona_id',Auth::user()->id)->first(); 
+            if(count($empleado)>0){
+                $tipoEmpleado = Tipo_Empleado::select()->where('id',$empleado->Tipo_Empleado_id)->first(); 
+                if($tipoEmpleado->id==1)
+                    return redirect('/gestion_paquetes');
+            }
+        }
+        return redirect('/');
     }
 
 }
