@@ -40,15 +40,20 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             @if(strcmp(Auth::user()->user, 'admin') == 0)
-                            <li><a href="{{ route('HistoricoClientes') }}">Historico de Clientes</a></li>
-                            <li><a href="{{ route('HistoricoEmpelados') }}">Historico de Empleados</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="{{ url('Logout') }}">Salir de Aplicación</a></li>
-                            @else
+                                <li><a href="{{ route('HistoricoClientes') }}">Historico de Clientes</a></li>
+                                <li><a href="{{ route('HistoricoEmpelados') }}">Historico de Empleados</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ url('Logout') }}">Salir de Aplicación</a></li>
+                            @elseif(strcmp(Auth::user()->rol, 'persona') == 0)
                                 <li><a href="actualizarCliente">Editar Datos</a></li>
                                 <li><a href="{{ url('Logout') }}">Salir de Aplicación</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a id="eliminar" onclick="eliminarCli()">Eliminar Cuenta</a></li>
+                            @elseif(strcmp(Auth::user()->rol, 'empleado') == 0)
+                                <li><a href="actualizaEmpleado">Editar Datos</a></li>
+                                <li><a href="{{ url('Logout') }}">Salir de Aplicación</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a id="eliminar" onclick="eliminarEmp()">Eliminar Cuenta</a></li>
                             @endif
                         </ul>
                     </div>
