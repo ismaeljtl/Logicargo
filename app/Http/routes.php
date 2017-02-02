@@ -170,3 +170,12 @@ Route::get('HistoricoEmpelados',[
             'uses' => 'AdminController@HistoricoEmpelados',
             'as' => 'HistoricoEmpelados',
 ]);
+//Muestra los centros de distribucion 
+Route::get('CentrosDist',[
+            'uses' => 'AdminController@CentrosDist',
+            'as' => 'CentrosDist',
+]);
+Route::get('EmpleadosXCD',[
+            'uses' => 'AdminController@EmpleadosXCD',
+            'as' => 'EmpleadosXCD',
+]);

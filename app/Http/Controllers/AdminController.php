@@ -219,4 +219,24 @@ class AdminController extends Controller
                                      
         return view('admin.historicoEmpleados')->with('array', json_decode(json_encode($usuarios, true)));
    }
+   
+   public function CentrosDist(){
+       $CD = DB::table('Centro_Distribucion')->select('*')->orderBY('nombre', 'asc')->get();
+
+       return view('admin.centrosDistribucion')->with('array', $CD, true);
+   }
+
+   public function EmpleadosXCD(Request $request){
+        $var = $request->all();
+        $var =  $var['CentroDist'];
+
+        $empleados = DB::table('Empleado')->join('Persona', 'Empleado.Persona_id', '=', 'Persona.id')
+                                         ->join('Ciudad', 'Ciudad.id', '=', 'Empleado.Centro_Distribucion_id')
+                                        ->join('Tipo_Empleado', 'Tipo_Empleado.id', '=', 'Empleado.Tipo_Empleado_id')
+                                         ->select('Empleado.*', 'Persona.*', 'Tipo_Empleado.tipo', 'Ciudad.nombre as nombreCiudad')
+                                         ->where('Empleado.Centro_Distribucion_id', '=', $var)
+                                         ->get();
+        
+        return view('admin.EmpleadosXCD')->with('array', $empleados);
+   }
 }
