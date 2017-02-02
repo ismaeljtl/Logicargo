@@ -53,7 +53,7 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="paquete_id" value="{{$paquete->id}}">
                                 <button type="submit" class="submit-table">
-                                    <span>Gestión de Itinerario(s)</span>
+                                    <span>Gestión de Itinerario</span>
                                 </button>
                             </form>
                         @else

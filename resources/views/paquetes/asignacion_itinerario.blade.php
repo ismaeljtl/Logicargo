@@ -71,7 +71,7 @@
                             <tr>
                                 <td>{{$vehiculo->marca}}</td>
                                 <td>{{$vehiculo->modelo}}</td>
-                                <td>{{$vehiculo->color}}</td>
+                                <td style="background-color:{{$vehiculo->color}}; border: 1px black solid;"></td>
                                 <td>{{$vehiculo->placa}}</td>
                                 <td>{{$vehiculo->maxCapPaq}}Kg</td>
                                 <td>{{$vehiculo->minCapPaq}}Kg</td>
@@ -86,12 +86,41 @@
                             </tr>
                         @endforeach
                     </tbody>
-                 </table>
-
+                </table>
+                <h3>Elección de repartidor</h3>
+                <br>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID Repartidor</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cédula</th>
+                            <th>Seleccionar</th>
+                        </tr>                    
+                    </thead>
+                    <tbody>
+                        @foreach($repartidores as $repartidor)
+                            <tr>
+                                <td>{{$repartidor->id}}</td>
+                                <td>{{$repartidor->nombre}}</td>
+                                <td>{{$repartidor->apellido}}</td>
+                                <td>{{$repartidor->cedula}}</td>
+                                <td>
+                                    @if($repartidor->asignado)
+                                        Asignado
+                                    @else
+                                        <input type="radio" name="repartidor_id" value="{{$repartidor->id}}" requiered>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                 <div class="btn-submit" style="text-align:center;">
                     <button type="submit" class="btn btn-info" id="businessForm">Asignar</button>
                 </div>
-                <br/>
+                <br>
                 <div class="col-lg-12 regresar">
                     <a href="{{url('/gestion_paquetes')}}">Regresar</a>
                     <br><br>
@@ -99,6 +128,7 @@
             </div>
 	    </form>
     </div>
+ </div>
 
 
 @endsection

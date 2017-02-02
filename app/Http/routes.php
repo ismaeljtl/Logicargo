@@ -82,6 +82,8 @@ Route::get('actualizarCliente',[
       Route::any('/asignar_itinerario', 'EnvioController@asignarItinerario');
       Route::post('/enviar_intinerario', 'EnvioController@enviarItinerario');
       Route::any('/historico_paquete', 'EnvioController@historicoPaquete');
+      Route::any('/getion_itinerario', 'EnvioController@gestionItinerario');
+      Route::post('/registrar_entrega', 'EnvioController@registrarEntrega');
 //}
 
 Route::post('actualizarPersona',[
