@@ -161,18 +161,18 @@ body > .register-persona > div > form > div > div:nth-child(10) > label{
     text-align: center;
 }
 
-.register-persona .container-horizontal .form-group .col-sm-4{
+.form-group .col-sm-4,.form-group .col-sm-12{
     background-color: white;
     border-radius: 10px;
 }
 /*Fin registro persona natural*/
 
 /*Registro Empleado*/
-.register-empleado .container-horizontal form .col-sm-4{
+.form-group .col-sm-4,.form-group .col-sm-12{
     margin-bottom: 15px;
 }
 
-.register-empleado .container-horizontal .form-group .col-sm-4 h2{
+.form-group .col-sm-4 h2,.form-group .col-sm-12 h2{
     text-align: center;
 }
 
