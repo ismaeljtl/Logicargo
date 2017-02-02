@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE PROCEDURE InsertJefeRepartidores()
+CREATE PROCEDURE `Logicargo`.`InsertJefeRepartidores`()
 BEGIN
   DECLARE x INT DEFAULT 1;
 

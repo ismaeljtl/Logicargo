@@ -1,6 +1,6 @@
-INSERT INTO `Logicargo`.`Estado_Vehiculo` (`estado`)
+INSERT INTO `Logicargo`.`Estado_Vehiculo` (`id`,`estado`)
 VALUES
-('Disponible'),
-('Asignado'),
-('Mantenimiento'),
-('Averiado');
+(1,'Disponible'),
+(2,'Asignado'),
+(3,'Mantenimiento'),
+(4,'Averiado');
