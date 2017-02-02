@@ -80,6 +80,8 @@ Route::get('actualizarCliente',[
       Route::post('/realizar_envio', 'EnvioController@realizarEnvio');
       Route::get('/gestion_paquetes', 'EnvioController@gestionPaquetes');
       Route::any('/asignar_itinerario', 'EnvioController@asignarItinerario');
+      Route::post('/enviar_intinerario', 'EnvioController@enviarItinerario');
+      Route::any('/historico_paquete', 'EnvioController@historicoPaquete');
 //}
 
 Route::post('actualizarPersona',[

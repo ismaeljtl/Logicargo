@@ -66,7 +66,15 @@
                             </form>
                         @endif
                     </td>
-                    <td><a href="">Ver Historico</a></td>
+                    <td>
+                        <form class="form-group" method="POST" action="{{url('/historico_paquete')}}">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="paquete_id" value="{{$paquete->id}}">
+                            <button type="submit" class="submit-table">
+                                <span>Ver Historico</span>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
