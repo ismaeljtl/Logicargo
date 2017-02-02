@@ -24,25 +24,25 @@ BEGIN
     INSERT INTO `Logicargo`.`Empleado`
 	(`fechaInicio`,`Persona_id`,`Centro_Distribucion_id`,`Tipo_Empleado_id`, `Jefe_id`)
 	VALUES
-	('2011-11-11',(SELECT id FROM `Logicargo`.`Persona` WHERE user=concat_ws(x,'rep1-','@gmail.com')),i,2, 
+	('2011-11-11',(SELECT id FROM `Logicargo`.`Persona` WHERE user=concat_ws(x,'rep1-','@gmail.com')),x,2, 
 		(select id from Empleado where Centro_Distribucion_id=x and Tipo_empleado=1)
     );
     INSERT INTO `Logicargo`.`Empleado`
 	(`fechaInicio`,`Persona_id`,`Centro_Distribucion_id`,`Tipo_Empleado_id`, `Jefe_id`)
 	VALUES
-	('2011-11-11',(SELECT id FROM `Logicargo`.`Persona` WHERE user=concat_ws(x,'rep2-','@gmail.com')),i,2, 
+	('2011-11-11',(SELECT id FROM `Logicargo`.`Persona` WHERE user=concat_ws(x,'rep2-','@gmail.com')),x,2, 
 		(select id from Empleado where Centro_Distribucion_id=x and Tipo_empleado=1)
     );
     INSERT INTO `Logicargo`.`Empleado`
 	(`fechaInicio`,`Persona_id`,`Centro_Distribucion_id`,`Tipo_Empleado_id`, `Jefe_id`)
 	VALUES
-	('2011-11-11',(SELECT id FROM `Logicargo`.`Persona` WHERE user=concat_ws(x,'rep3-','@gmail.com')),i,2, 
+	('2011-11-11',(SELECT id FROM `Logicargo`.`Persona` WHERE user=concat_ws(x,'rep3-','@gmail.com')),x,2, 
 		(select id from Empleado where Centro_Distribucion_id=x and Tipo_empleado=1)
     );
     INSERT INTO `Logicargo`.`Empleado`
 	(`fechaInicio`,`Persona_id`,`Centro_Distribucion_id`,`Tipo_Empleado_id`, `Jefe_id`)
 	VALUES
-	('2011-11-11',(SELECT id FROM `Logicargo`.`Persona` WHERE user=concat_ws(x,'rep4-','@gmail.com')),i,2, 
+	('2011-11-11',(SELECT id FROM `Logicargo`.`Persona` WHERE user=concat_ws(x,'rep4-','@gmail.com')),x,2, 
 		(select id from Empleado where Centro_Distribucion_id=x and Tipo_empleado=1)
     );
         
