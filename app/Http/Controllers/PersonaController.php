@@ -8,6 +8,7 @@ use Hash;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Paquete;
 
 class PersonaController extends Controller
 {
@@ -105,6 +106,50 @@ class PersonaController extends Controller
     public function getPersonas(){
         $correos = DB::table('Persona')->select('user')->orderBy('user', 'asc')->get();
         return json_encode($correos, true);
+    }
+
+    public function paquetesEnviados(){
+        $paquetes = Paquete::select()
+            ->join('Centro_Distribucion as C1','C1.id','=','Paquete.Centro_Distribucion_idEmisor')
+            ->join('Centro_Distribucion as C2','C2.id','=','Paquete.Centro_Distribucion_idReceptor')
+            ->select(DB::raw(
+                'Paquete.id, 
+                Paquete.peso, 
+                Paquete.volumen,
+                Paquete.fragilidad,  
+                Paquete.prioridad, 
+                (select nombre from Persona where id=Paquete.Persona_idEmisor) as personaEmisor,
+                (select nombre from Persona where id=Paquete.Persona_idReceptor) as personaReceptor,
+                C1.nombre as centroEmisor,
+                C2.nombre as centroReceptor,
+                (select count(*) from Itinerario where Paquete_id = Paquete.id) as numItinerario'
+            ))
+            ->where('Paquete.Persona_idEmisor',Auth::user()->id)
+            ->get();
+
+        return view('paquetes.paquetes_enviados',['paquetes' => $paquetes]);
+    }
+
+    public function paquetesRecibidos(){
+        $paquetes = Paquete::select()
+            ->join('Centro_Distribucion as C1','C1.id','=','Paquete.Centro_Distribucion_idEmisor')
+            ->join('Centro_Distribucion as C2','C2.id','=','Paquete.Centro_Distribucion_idReceptor')
+            ->select(DB::raw(
+                'Paquete.id, 
+                Paquete.peso, 
+                Paquete.volumen,
+                Paquete.fragilidad,  
+                Paquete.prioridad, 
+                (select nombre from Persona where id=Paquete.Persona_idEmisor) as personaEmisor,
+                (select nombre from Persona where id=Paquete.Persona_idReceptor) as personaReceptor,
+                C1.nombre as centroEmisor,
+                C2.nombre as centroReceptor,
+                (select count(*) from Itinerario where Paquete_id = Paquete.id) as numItinerario'
+            ))
+            ->where('Paquete.Persona_idReceptor',Auth::user()->id)
+            ->get();
+
+        return view('paquetes.paquetes_recibidos',['paquetes' => $paquetes]);
     }
 
 }

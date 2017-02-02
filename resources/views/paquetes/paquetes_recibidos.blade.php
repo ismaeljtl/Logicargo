@@ -5,24 +5,25 @@
 @section('header')
 @yield('header')
 @section('main')
+<h2 style="text-align: center">Paquetes Recibidos</h2>
 <div class="col-sm-8 col-sm-offset-2">
-    <div class="col-sm-12">
-        <h2 style="text-align: center">Datos de paquete</h2>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Peso</th>
-                    <th>Volumen</th>
-                    <th>Fragilidad</th>
-                    <th>Prioridad</th>
-                    <th>Emisor</th>
-                    <th>Receptor</th>
-                    <th>Desde</th>
-                    <th>Hasta</th>
-                </tr>
-            </thead>
-            <tbody>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Peso</th>
+                <th>Volumen</th>
+                <th>Fragilidad</th>
+                <th>Prioridad</th>
+                <th>Emisor</th>
+                <th>Receptor</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Historico</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($paquetes as $paquete)
                 <tr>
                     <td>{{$paquete->id}}</td>
                     <td>{{$paquete->peso}}Kg</td>
@@ -45,30 +46,21 @@
                     <td>{{$paquete->personaReceptor}}</td>
                     <td>{{$paquete->centroEmisor}}</td>
                     <td>{{$paquete->centroReceptor}}</td>
+                    <td>
+                        <form class="form-group" method="POST" action="{{url('/historico_paquete')}}">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="paquete_id" value="{{$paquete->id}}">
+                            <button type="submit" class="submit-table">
+                                <span>Ver Historico</span>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
-            </tbody>
-        </table>
-
-        <h2 style="text-align: center">Historico</h2>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Estatus</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($historicoPaquete as $historia)
-                    <tr>
-                        <td>{{$historia->fechaHora}}</td>
-                        <td>{{$historia->estatusPaquete}}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+            @endforeach
+        </tbody>
+    </table>
     <div style="text-align:center" class="regresar">
-        <a href="{{URL::previous()}}">Regresar</a>
+        <a href="{{url('/')}}">Regresar</a>
     </div>
 </div>
 

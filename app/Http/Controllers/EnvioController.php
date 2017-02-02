@@ -245,7 +245,9 @@ class EnvioController extends Controller
     public function registrarEntrega(Request $request){
         DB::table('Itinerario')
             ->where('Paquete_id',$request->paquete_id)
-            ->update(['firma_Conf' => true]);    
+            ->update(['firma_Conf' => true])
+            ->select('id')
+            ->first(); 
         
         DB::table('Historico_Paquete')->insert([
                 'fechaHora' => date("Y").'-'.date("m").'-'.date("d").' '.date("H").':'.date("i").':'.date("s"),
@@ -272,9 +274,13 @@ class EnvioController extends Controller
             ->first();
 
         $itinerario = DB::table('Itinerario')
-            ->select('Itinerario.firma_Conf')
+            ->select('Itinerario.firma_Conf','Itinerario.Vehiculo_id')
             ->where('Paquete_id',$request->paquete_id)
             ->first();
+        
+        DB::table('Vehiculo')
+            ->where('id',$itinerario->Vehiculo_id)
+            ->update(['Estado_Vehiculo_id' => 1]);
         
         session()->flash('status', 'Se ha actualizado la información del itinerario!');
         return view('paquetes.gestion_itinerario',['paquete' => $paquete,'itinerario' => $itinerario]);

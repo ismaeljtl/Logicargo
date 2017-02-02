@@ -22,6 +22,12 @@
                 <li>
                     <a href="{{url('/nuevo_envio')}}">Realiza un envío</a>
                 </li>   
+                <li>
+                    <a href="{{url('/paquetes_enviados')}}">Paquetes enviados</a>
+                </li> 
+                <li>
+                    <a href="{{url('/paquetes_recibidos')}}">Paquetes recibidos</a>
+                </li> 
                 @if(session()->has('tipo_empleado_id'))
                     @if(session()->get('tipo_empleado_id')==1)
                          <li>

@@ -53,6 +53,9 @@ Route::get('getPersonas', [
             'as' => 'getPersonas',
 ]);
 
+Route::get('/paquetes_enviados', 'PersonaController@paquetesEnviados');
+Route::get('/paquetes_recibidos', 'PersonaController@paquetesRecibidos');
+
 //Rutas para Login de Usuarios
 Route::post('Login', 'Auth\AuthController@postLogin');
 Route::get('Logout', 'Auth\AuthController@getLogout');
